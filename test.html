@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>untitled</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Robin Lu">
+	<style>
+	.highlight {-webkit-box-shadow:1px 1px 1px #999;background:#ed7;padding:2px 4px;-webkit-border-radius:6px;}
+	.cur-highlight {-webkit-box-shadow:3px 3px 3px #999;background:yellow;padding:2px 4px;-webkit-border-radius:6px;color:#000}
+	</style>
+	<!-- Date: 2008-07-31 -->
+</head>
+<body>
+  <p>abc def dwfe tHe</p>
+  <p>abc def dwfe tHe</p>
+	<script type="text/javascript" charset="utf-8">
+	var gHighLightedElements;
+	var curHighlightId;
+	function highlight (rootnode, pattern) {
+		//init
+		removeHighlight();
+		curHighlightId = -1;
+		gHighLightedElements = new Array;
+
+		//highlight
+		var nodelist = new Array();
+		var upattern = pattern.toUpperCase();
+		nodelist.push(rootnode);
+		while(nodelist.length>0)
+		{
+			var pos;
+			var node = nodelist.shift();
+			if (node.nodeType == 3) {
+				pos = node.data.toUpperCase().indexOf(upattern);
+				if (pos >= 0) {
+					var spannode = document.createElement('span');
+					spannode.className = 'highlight';
+					m = node.splitText(pos);
+					e = m.splitText(upattern.length);
+					mclone = m.cloneNode(true);
+					spannode.appendChild(mclone);
+					nodelist.unshift(e);
+					m.parentNode.replaceChild(spannode, m);
+					gHighLightedElements.push(spannode);
+				};
+			} else if (node.nodeType == 1 && node.childNodes && !/(script|style)/i.test(node.tagName)) {
+				for (var i = node.childNodes.length - 1; i >= 0; i--){
+					nodelist.unshift(node.childNodes[i]);
+				};
+			}
+		}
+		return gHighLightedElements.length;
+	}
+	function removeHighlight() {
+		var nodelist = document.getElementsByTagName('span');
+		for (var i = nodelist.length - 1; i >= 0; i--){
+			var node = nodelist[i];
+			if (node.className == 'highlight') {
+				with (node.parentNode) {
+					replaceChild(node.firstChild, node);
+					normalize();
+				}
+			};
+		};
+	};
+	function scrollToHighlight(step) {
+		if(gHighLightedElements.length == 0)
+			return;
+
+		index = curHighlightId + step;
+
+		if (index>gHighLightedElements.length)
+			index = 0;
+		if (index < 0)
+			index = gHighLightedElements.length + index;
+
+		var e = gHighLightedElements[index];
+		e.scrollIntoView(false);
+		setCurHighlight(e);
+		if(curHighlightId!=-1)
+			gHighLightedElements[curHighlightId].className = "highlight";
+		curHighlightId = index;
+		console.log("done");
+	};
+	function setCurHighlight(e) {
+		e.className = "cur-highlight";
+	}
+	highlight(document.body, 'd');
+	scrollToHighlight(1);
+	scrollToHighlight(1);
+	</script>
+
+</body>
+</html>

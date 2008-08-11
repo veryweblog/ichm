@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD582A0DA1D0D100B32029 /* MainMenu.xib */; };
+		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
+		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
+		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		C30F2B2F0E42135C003A17A7 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = C30F2B2E0E42135C003A17A7 /* home.png */; };
+		C33A4ABB0E34E92D00277D64 /* CHMDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A4ABA0E34E92D00277D64 /* CHMDocument.m */; };
+		C33A4AE10E34EA7700277D64 /* CHMDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = C33A4ADF0E34EA7700277D64 /* CHMDocument.xib */; };
+		C33BB2050E46DA100026F435 /* ichm_file.icns in Resources */ = {isa = PBXBuildFile; fileRef = C33BB2040E46DA100026F435 /* ichm_file.icns */; };
+		C33D3ACA0E4F05E500F7B487 /* Bookmarks.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = C33D3AC90E4F05E500F7B487 /* Bookmarks.xcdatamodel */; };
+		C33D3AD80E4F1E3800F7B487 /* CHMFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C33D3AD30E4F1E3800F7B487 /* CHMFile.m */; };
+		C33D3AD90E4F1E3800F7B487 /* CHMTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C33D3AD50E4F1E3800F7B487 /* CHMTag.m */; };
+		C33D3B0E0E4F245600F7B487 /* BookmarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33D3B0D0E4F245600F7B487 /* BookmarkController.m */; };
+		C33D3B1D0E4F256B00F7B487 /* Bookmark.xib in Resources */ = {isa = PBXBuildFile; fileRef = C33D3B1C0E4F256B00F7B487 /* Bookmark.xib */; };
+		C33DE50B0E40A651009FF1F4 /* ichm.css in Resources */ = {isa = PBXBuildFile; fileRef = C33DE50A0E40A651009FF1F4 /* ichm.css */; };
+		C33DE67D0E40C40A009FF1F4 /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = C33DE67B0E40C40A009FF1F4 /* highlight.js */; };
+		C35B99FA0E39C23400A63BC3 /* redbird.icns in Resources */ = {isa = PBXBuildFile; fileRef = C35B99F90E39C23400A63BC3 /* redbird.icns */; };
+		C35B9BCE0E39E38500A63BC3 /* PSMTabBarControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35B9BCD0E39E38500A63BC3 /* PSMTabBarControl.framework */; };
+		C35B9BDF0E39E48D00A63BC3 /* PSMTabBarControl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C35B9BCD0E39E38500A63BC3 /* PSMTabBarControl.framework */; };
+		C36FD4240E482D3800496822 /* CHMWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C36FD4230E482D3800496822 /* CHMWebView.xib */; };
+		C36FD52C0E48403F00496822 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C36FD52B0E48403F00496822 /* Localizable.strings */; };
+		C3A79CC30E30438B00FF4485 /* CHMTableOfContent.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A79CC20E30438B00FF4485 /* CHMTableOfContent.m */; };
+		C3AA9B220E3EC8A200D2FB53 /* CHMWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3AA9B210E3EC8A200D2FB53 /* CHMWebView.m */; };
+		C3AA9D660E3F005C00D2FB53 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AA9D650E3F005C00D2FB53 /* Sparkle.framework */; };
+		C3AA9D900E3F00FE00D2FB53 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3AA9D650E3F005C00D2FB53 /* Sparkle.framework */; };
+		C3BF8BA00E4FDD7200AE3BEE /* CHMBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8B9F0E4FDD7200AE3BEE /* CHMBookmark.m */; };
+		C3C082250E4557E700D58E19 /* TB_Sidebar.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C082240E4557E700D58E19 /* TB_Sidebar.png */; };
+		C3C396F90E3F8E2800A52FBE /* chm_lib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C396F80E3F8E2800A52FBE /* chm_lib.framework */; };
+		C3C397000E3F8E2E00A52FBE /* chm_lib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3C396F80E3F8E2800A52FBE /* chm_lib.framework */; };
+		C3D6EE0B0E3D9E5C00A823A2 /* CHMOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6EE0A0E3D9E5C00A823A2 /* CHMOutlineView.m */; };
+		C3DB24CE0E2DB849000E5A20 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DB24CD0E2DB849000E5A20 /* WebKit.framework */; };
+		C3DB252A0E2DD49F000E5A20 /* ITSSProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DB25290E2DD49F000E5A20 /* ITSSProtocol.m */; };
+		C3DB252F0E2DD646000E5A20 /* ICHMApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DB252E0E2DD646000E5A20 /* ICHMApplication.m */; };
+		C3ED1D870E4307F500C1B93A /* CHMTextEncodingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ED1D860E4307F500C1B93A /* CHMTextEncodingMenu.m */; };
+		C3ED1DA00E43106D00C1B93A /* textencoding.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3ED1D9F0E43106D00C1B93A /* textencoding.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C35B9BE70E39E4AB00A63BC3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C3C397000E3F8E2E00A52FBE /* chm_lib.framework in CopyFiles */,
+				C3AA9D900E3F00FE00D2FB53 /* Sparkle.framework in CopyFiles */,
+				C35B9BDF0E39E48D00A63BC3 /* PSMTabBarControl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1DDD582B0DA1D0D100B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32DBCF750370BD2300C91783 /* ichm_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ichm_Prefix.pch; sourceTree = "<group>"; };
+		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D15AC370486D014006FF6A4 /* iChm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C30F2B2E0E42135C003A17A7 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		C33A4AB90E34E92D00277D64 /* CHMDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMDocument.h; sourceTree = "<group>"; };
+		C33A4ABA0E34E92D00277D64 /* CHMDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMDocument.m; sourceTree = "<group>"; };
+		C33A4AE00E34EA7700277D64 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/CHMDocument.xib; sourceTree = "<group>"; };
+		C33BB2040E46DA100026F435 /* ichm_file.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ichm_file.icns; sourceTree = "<group>"; };
+		C33D3AC90E4F05E500F7B487 /* Bookmarks.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Bookmarks.xcdatamodel; sourceTree = "<group>"; };
+		C33D3AD20E4F1E3800F7B487 /* CHMFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMFile.h; sourceTree = "<group>"; };
+		C33D3AD30E4F1E3800F7B487 /* CHMFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMFile.m; sourceTree = "<group>"; };
+		C33D3AD40E4F1E3800F7B487 /* CHMTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMTag.h; sourceTree = "<group>"; };
+		C33D3AD50E4F1E3800F7B487 /* CHMTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMTag.m; sourceTree = "<group>"; };
+		C33D3B0C0E4F245600F7B487 /* BookmarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkController.h; sourceTree = "<group>"; };
+		C33D3B0D0E4F245600F7B487 /* BookmarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkController.m; sourceTree = "<group>"; };
+		C33D3B1C0E4F256B00F7B487 /* Bookmark.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Bookmark.xib; sourceTree = "<group>"; };
+		C33DE50A0E40A651009FF1F4 /* ichm.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = ichm.css; sourceTree = "<group>"; };
+		C33DE67B0E40C40A009FF1F4 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.js; sourceTree = "<group>"; };
+		C33DE6DC0E40CA96009FF1F4 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		C35B99F90E39C23400A63BC3 /* redbird.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = redbird.icns; sourceTree = "<group>"; };
+		C35B9BCD0E39E38500A63BC3 /* PSMTabBarControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PSMTabBarControl.framework; path = ../../../Library/Frameworks/PSMTabBarControl.framework; sourceTree = SOURCE_ROOT; };
+		C36FD41A0E4829B400496822 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/CHMDocument.xib; sourceTree = "<group>"; };
+		C36FD41D0E482AFA00496822 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C36FD4520E48368C00496822 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C36FD4F00E48393000496822 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C36FD4F50E483DA800496822 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = zh_CN.lproj/CHMDocument.xib; sourceTree = "<group>"; };
+		C36FD4F60E483DD900496822 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = zh_CN.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C36FD4F70E483DE200496822 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = zh_CN.lproj/CHMWebView.xib; sourceTree = "<group>"; };
+		C36FD5290E48403A00496822 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C36FD52D0E48404B00496822 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C36FD5830E4850F100496822 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C36FD5840E48513900496822 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/CHMWebView.xib; sourceTree = "<group>"; };
+		C3A79CC10E30438B00FF4485 /* CHMTableOfContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMTableOfContent.h; sourceTree = "<group>"; };
+		C3A79CC20E30438B00FF4485 /* CHMTableOfContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMTableOfContent.m; sourceTree = "<group>"; };
+		C3AA9B1D0E3EC88600D2FB53 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/CHMWebView.xib; sourceTree = "<group>"; };
+		C3AA9B200E3EC8A200D2FB53 /* CHMWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMWebView.h; sourceTree = "<group>"; };
+		C3AA9B210E3EC8A200D2FB53 /* CHMWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMWebView.m; sourceTree = "<group>"; };
+		C3AA9D650E3F005C00D2FB53 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../../../Library/Frameworks/Sparkle.framework; sourceTree = SOURCE_ROOT; };
+		C3BF8B9E0E4FDD7200AE3BEE /* CHMBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMBookmark.h; sourceTree = "<group>"; };
+		C3BF8B9F0E4FDD7200AE3BEE /* CHMBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMBookmark.m; sourceTree = "<group>"; };
+		C3C082240E4557E700D58E19 /* TB_Sidebar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_Sidebar.png; sourceTree = "<group>"; };
+		C3C396F80E3F8E2800A52FBE /* chm_lib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = chm_lib.framework; path = ../../../Library/Frameworks/chm_lib.framework; sourceTree = SOURCE_ROOT; };
+		C3D6EE090E3D9E5C00A823A2 /* CHMOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMOutlineView.h; sourceTree = "<group>"; };
+		C3D6EE0A0E3D9E5C00A823A2 /* CHMOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMOutlineView.m; sourceTree = "<group>"; };
+		C3DB24CD0E2DB849000E5A20 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
+		C3DB25280E2DD49F000E5A20 /* ITSSProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSSProtocol.h; sourceTree = "<group>"; };
+		C3DB25290E2DD49F000E5A20 /* ITSSProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSSProtocol.m; sourceTree = "<group>"; };
+		C3DB252D0E2DD646000E5A20 /* ICHMApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICHMApplication.h; sourceTree = "<group>"; };
+		C3DB252E0E2DD646000E5A20 /* ICHMApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICHMApplication.m; sourceTree = "<group>"; };
+		C3E9715D0E4BEAA000B7B36D /* lcid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lcid.h; sourceTree = "<group>"; };
+		C3ED1D850E4307F500C1B93A /* CHMTextEncodingMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMTextEncodingMenu.h; sourceTree = "<group>"; };
+		C3ED1D860E4307F500C1B93A /* CHMTextEncodingMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMTextEncodingMenu.m; sourceTree = "<group>"; };
+		C3ED1D9F0E43106D00C1B93A /* textencoding.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = textencoding.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D15AC330486D014006FF6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+				C3DB24CE0E2DB849000E5A20 /* WebKit.framework in Frameworks */,
+				C35B9BCE0E39E38500A63BC3 /* PSMTabBarControl.framework in Frameworks */,
+				C3AA9D660E3F005C00D2FB53 /* Sparkle.framework in Frameworks */,
+				C3C396F90E3F8E2800A52FBE /* chm_lib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3C396F80E3F8E2800A52FBE /* chm_lib.framework */,
+				C3AA9D650E3F005C00D2FB53 /* Sparkle.framework */,
+				C35B9BCD0E39E38500A63BC3 /* PSMTabBarControl.framework */,
+				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3DB24CD0E2DB849000E5A20 /* WebKit.framework */,
+				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
+				13E42FBA07B3F13500E4EEF1 /* CoreData.framework */,
+				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB0FE9D524F11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D15AC370486D014006FF6A4 /* iChm.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A37F4AAFDCFA73011CA2CEA /* ichm */ = {
+			isa = PBXGroup;
+			children = (
+				C33D3ADB0E4F1E4400F7B487 /* Bookmark */,
+				2A37F4ABFDCFA73011CA2CEA /* Classes */,
+				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
+				2A37F4B8FDCFA73011CA2CEA /* Resources */,
+				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
+				19C28FB0FE9D524F11CA2CBB /* Products */,
+			);
+			name = ichm;
+			sourceTree = "<group>";
+		};
+		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C3ED1D850E4307F500C1B93A /* CHMTextEncodingMenu.h */,
+				C3ED1D860E4307F500C1B93A /* CHMTextEncodingMenu.m */,
+				C33A4AB90E34E92D00277D64 /* CHMDocument.h */,
+				C33A4ABA0E34E92D00277D64 /* CHMDocument.m */,
+				C3A79CC10E30438B00FF4485 /* CHMTableOfContent.h */,
+				C3A79CC20E30438B00FF4485 /* CHMTableOfContent.m */,
+				C3DB25280E2DD49F000E5A20 /* ITSSProtocol.h */,
+				C3DB25290E2DD49F000E5A20 /* ITSSProtocol.m */,
+				C3DB252D0E2DD646000E5A20 /* ICHMApplication.h */,
+				C3DB252E0E2DD646000E5A20 /* ICHMApplication.m */,
+				C3D6EE090E3D9E5C00A823A2 /* CHMOutlineView.h */,
+				C3D6EE0A0E3D9E5C00A823A2 /* CHMOutlineView.m */,
+				C3AA9B200E3EC8A200D2FB53 /* CHMWebView.h */,
+				C3AA9B210E3EC8A200D2FB53 /* CHMWebView.m */,
+				C3E9715D0E4BEAA000B7B36D /* lcid.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C33DE67B0E40C40A009FF1F4 /* highlight.js */,
+				32DBCF750370BD2300C91783 /* ichm_Prefix.pch */,
+				2A37F4B0FDCFA73011CA2CEA /* main.m */,
+				C33DE50A0E40A651009FF1F4 /* ichm.css */,
+				C33DE6DC0E40CA96009FF1F4 /* test.html */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C33D3B1B0E4F253D00F7B487 /* xibs */,
+				C3C082260E4557F900D58E19 /* images */,
+				C3ED1D9F0E43106D00C1B93A /* textencoding.plist */,
+				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
+				8D15AC360486D014006FF6A4 /* Info.plist */,
+				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
+				C36FD52B0E48403F00496822 /* Localizable.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
+				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C33D3ADB0E4F1E4400F7B487 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				C3BF8B9E0E4FDD7200AE3BEE /* CHMBookmark.h */,
+				C3BF8B9F0E4FDD7200AE3BEE /* CHMBookmark.m */,
+				C33D3AC90E4F05E500F7B487 /* Bookmarks.xcdatamodel */,
+				C33D3AD20E4F1E3800F7B487 /* CHMFile.h */,
+				C33D3AD30E4F1E3800F7B487 /* CHMFile.m */,
+				C33D3AD40E4F1E3800F7B487 /* CHMTag.h */,
+				C33D3AD50E4F1E3800F7B487 /* CHMTag.m */,
+				C33D3B0C0E4F245600F7B487 /* BookmarkController.h */,
+				C33D3B0D0E4F245600F7B487 /* BookmarkController.m */,
+			);
+			name = Bookmark;
+			sourceTree = "<group>";
+		};
+		C33D3B1B0E4F253D00F7B487 /* xibs */ = {
+			isa = PBXGroup;
+			children = (
+				C33A4ADF0E34EA7700277D64 /* CHMDocument.xib */,
+				1DDD582A0DA1D0D100B32029 /* MainMenu.xib */,
+				C36FD4230E482D3800496822 /* CHMWebView.xib */,
+				C33D3B1C0E4F256B00F7B487 /* Bookmark.xib */,
+			);
+			name = xibs;
+			sourceTree = "<group>";
+		};
+		C3C082260E4557F900D58E19 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				C33BB2040E46DA100026F435 /* ichm_file.icns */,
+				C30F2B2E0E42135C003A17A7 /* home.png */,
+				C35B99F90E39C23400A63BC3 /* redbird.icns */,
+				C3C082240E4557E700D58E19 /* TB_Sidebar.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D15AC270486D014006FF6A4 /* iChm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "iChm" */;
+			buildPhases = (
+				8D15AC2B0486D014006FF6A4 /* Resources */,
+				8D15AC300486D014006FF6A4 /* Sources */,
+				8D15AC330486D014006FF6A4 /* Frameworks */,
+				C35B9BE70E39E4AB00A63BC3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iChm;
+			productInstallPath = "$(HOME)/Applications";
+			productName = ichm;
+			productReference = 8D15AC370486D014006FF6A4 /* iChm.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "ichm" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				zh_CN,
+			);
+			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* ichm */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D15AC270486D014006FF6A4 /* iChm */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D15AC2B0486D014006FF6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C33DE67D0E40C40A009FF1F4 /* highlight.js in Resources */,
+				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
+				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
+				1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */,
+				C33A4AE10E34EA7700277D64 /* CHMDocument.xib in Resources */,
+				C35B99FA0E39C23400A63BC3 /* redbird.icns in Resources */,
+				C36FD4240E482D3800496822 /* CHMWebView.xib in Resources */,
+				C33DE50B0E40A651009FF1F4 /* ichm.css in Resources */,
+				C30F2B2F0E42135C003A17A7 /* home.png in Resources */,
+				C3ED1DA00E43106D00C1B93A /* textencoding.plist in Resources */,
+				C3C082250E4557E700D58E19 /* TB_Sidebar.png in Resources */,
+				C33BB2050E46DA100026F435 /* ichm_file.icns in Resources */,
+				C36FD52C0E48403F00496822 /* Localizable.strings in Resources */,
+				C33D3B1D0E4F256B00F7B487 /* Bookmark.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D15AC300486D014006FF6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC320486D014006FF6A4 /* main.m in Sources */,
+				C3DB252A0E2DD49F000E5A20 /* ITSSProtocol.m in Sources */,
+				C3DB252F0E2DD646000E5A20 /* ICHMApplication.m in Sources */,
+				C3A79CC30E30438B00FF4485 /* CHMTableOfContent.m in Sources */,
+				C33A4ABB0E34E92D00277D64 /* CHMDocument.m in Sources */,
+				C3D6EE0B0E3D9E5C00A823A2 /* CHMOutlineView.m in Sources */,
+				C3AA9B220E3EC8A200D2FB53 /* CHMWebView.m in Sources */,
+				C3ED1D870E4307F500C1B93A /* CHMTextEncodingMenu.m in Sources */,
+				C33D3ACA0E4F05E500F7B487 /* Bookmarks.xcdatamodel in Sources */,
+				C33D3AD80E4F1E3800F7B487 /* CHMFile.m in Sources */,
+				C33D3AD90E4F1E3800F7B487 /* CHMTag.m in Sources */,
+				C33D3B0E0E4F245600F7B487 /* BookmarkController.m in Sources */,
+				C3BF8BA00E4FDD7200AE3BEE /* CHMBookmark.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165FFE840EACC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C1660FE840EACC02AAC07 /* English */,
+				C36FD4520E48368C00496822 /* German */,
+				C36FD4F00E48393000496822 /* zh_CN */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1DDD582A0DA1D0D100B32029 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD582B0DA1D0D100B32029 /* English */,
+				C36FD41D0E482AFA00496822 /* German */,
+				C36FD4F60E483DD900496822 /* zh_CN */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A37F4BAFDCFA73011CA2CEA /* English */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		C33A4ADF0E34EA7700277D64 /* CHMDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C33A4AE00E34EA7700277D64 /* English */,
+				C36FD41A0E4829B400496822 /* German */,
+				C36FD4F50E483DA800496822 /* zh_CN */,
+			);
+			name = CHMDocument.xib;
+			sourceTree = "<group>";
+		};
+		C36FD4230E482D3800496822 /* CHMWebView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3AA9B1D0E3EC88600D2FB53 /* English */,
+				C36FD4F70E483DE200496822 /* zh_CN */,
+				C36FD5840E48513900496822 /* German */,
+			);
+			name = CHMWebView.xib;
+			sourceTree = "<group>";
+		};
+		C36FD52B0E48403F00496822 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C36FD5290E48403A00496822 /* English */,
+				C36FD52D0E48404B00496822 /* zh_CN */,
+				C36FD5830E4850F100496822 /* German */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C05733C808A9546B00998B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Downloads/PSMTabBarControlPalette\"",
+					"\"$(SRCROOT)/../../../Library/Frameworks\"",
+					"\"$(SRCROOT)/../chm_lib/build/Release\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ichm_Prefix.pch;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lcrypto",
+				);
+				PRODUCT_NAME = iChm;
+			};
+			name = Debug;
+		};
+		C05733C908A9546B00998B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Downloads/PSMTabBarControlPalette\"",
+					"\"$(SRCROOT)/../../../Library/Frameworks\"",
+					"\"$(SRCROOT)/../chm_lib/build/Release\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ichm_Prefix.pch;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lcrypto",
+				);
+				PRODUCT_NAME = iChm;
+			};
+			name = Release;
+		};
+		C05733CC08A9546B00998B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		C05733CD08A9546B00998B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C05733C708A9546B00998B17 /* Build configuration list for PBXNativeTarget "iChm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C05733C808A9546B00998B17 /* Debug */,
+				C05733C908A9546B00998B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "ichm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C05733CC08A9546B00998B17 /* Debug */,
+				C05733CD08A9546B00998B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+}
