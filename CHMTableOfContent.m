@@ -314,6 +314,8 @@ static void elementDidEnd( CHMTableOfContent *context, const xmlChar *name )
 - (void)addPath:(NSString*)path Score:(float)score
 {
 	LinkItem * item = [tableOfContent itemForPath:path withStack:nil];
+	if (!item)
+		return;
 	ScoredLinkItem * newitem = [[ScoredLinkItem alloc] initWithName:[item name] Path:[item path] Score:score];
 	[rootItems appendChild:newitem];
 }

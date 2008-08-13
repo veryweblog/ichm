@@ -15,12 +15,15 @@
 {
 }
 
-@property (retain) NSString * path;
+@property (retain) NSString * url;
 @property (retain) NSString * title;
 @property (retain) NSDate * createdAt;
 @property (retain) CHMFile * file;
 @property (retain) NSSet* tags;
 
+- (NSString*)tagsString;
++ (CHMBookmark *)bookmarkByURL:(NSString*)url withContext:(NSManagedObjectContext*)context;
+- (void)setTagsString:(NSString*)tags;
 @end
 
 @interface CHMBookmark (CoreDataGeneratedAccessors)

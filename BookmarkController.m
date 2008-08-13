@@ -10,6 +10,70 @@
 #import "CHMDocument.h"
 #import "CHMFile.h"
 #import "CHMBookmark.h"
+#import "CHMTag.h"
+
+@interface BookmarkController (Private)
+- (void)groupByTagsMenuNeedsUpdate:(NSMenu*)menu;
+- (void)groupByFilesMenuNeedsUpdate:(NSMenu*)menu;
+- (NSMenuItem *)createMenuItemForBookmark:(CHMBookmark*)bm;
+- (void)setupDataSource;
+- (void)addEmptyItemToMenu:(NSMenu*)menu;
+@end
+
+@interface FetchRequestItem : NSObject
+{
+	NSFetchRequest *request;
+	NSMutableArray* children;
+	NSString *title;
+}
+
+@property (readwrite, retain) NSFetchRequest* request;
+@property (readwrite, retain) NSString* title;
+
+- (void)addChild:(FetchRequestItem*)child;
+- (FetchRequestItem*)childAtIndex:(int)index;
+- (int)numberOfChildren;
+@end
+
+@implementation FetchRequestItem
+
+@synthesize request;
+@synthesize title;
+
+- (id)init
+{
+	children = [[NSMutableArray alloc] init];
+	request = nil;
+	title = nil;
+	return self;
+}
+
+- (void)dealloc
+{
+	if (request)
+		[request release];
+	if (title)
+		[title release];
+	[children release];
+	[super dealloc];
+}
+
+- (void)addChild:(FetchRequestItem*)child
+{
+	[children addObject:child];
+}
+
+- (FetchRequestItem*)childAtIndex:(int)index
+{
+	return [children objectAtIndex:index];
+}
+
+- (int)numberOfChildren
+{
+	return [children count];
+}
+
+@end
 
 
 @implementation BookmarkController
@@ -17,12 +81,24 @@
 {
     if (![super initWithWindowNibName:@"Bookmark"])
         return nil;
+	
+	tocSource = nil;
+
+	[CHMFile purgeWithContext:[self managedObjectContext]];
+
     return self;
 }
 
 - (void)windowDidLoad
 {
     NSLog(@"Nib file is loaded");
+	[tableController fetch:self];
+}
+
+- (IBAction)showWindow:(id)sender
+{
+	[self setupDataSource];
+	[super showWindow:sender];
 }
 
 - (IBAction)showAddBookmark:(id)sender
@@ -34,6 +110,12 @@
 	CHMDocument *doc = (CHMDocument*)sender;
 	[titleField setStringValue:[doc currentTitle]];
 	[titleField selectText:self];
+	CHMBookmark* bm = [CHMBookmark bookmarkByURL:[doc currentURL] withContext:[self managedObjectContext]];
+	if( bm && [bm.tags count] > 0 )
+		[tagField setStringValue:[bm tagsString]];
+	else
+		[tagField setStringValue:@""];
+	
 	[NSApp beginSheet:addPanel modalForWindow:[doc windowForSheet] modalDelegate:self didEndSelector:@selector(addBookmarkDidEnd:returnCode:contextInfo:) contextInfo:doc];
 
 }
@@ -55,40 +137,51 @@
 	NSError *error = nil;
 	NSManagedObjectContext *context =[self managedObjectContext];
 	
-	CHMFile *chmFile = [self fileByPath:[doc filePath]] ;
+	CHMFile *chmFile = [CHMFile fileByPath:[doc filePath] withContext:context] ;
 	if (!chmFile)
 	{
 		chmFile = [NSEntityDescription
 				   insertNewObjectForEntityForName:@"File"
 				   inManagedObjectContext:context];
 		[chmFile setPath:[doc filePath]];
+		[chmFile setTitle:[doc docTitle]];
 		[context save:&error];
 		if ( ![context save:&error] )
 			NSLog(@"Can not fetch file info: %d",error );
 	}
 	
-	CHMBookmark *bookmark = [NSEntityDescription
+	CHMBookmark *bookmark = [CHMBookmark bookmarkByURL:[doc currentURL] withContext:[self managedObjectContext]];
+	if ( !bookmark )
+	{
+		bookmark = [NSEntityDescription
 							 insertNewObjectForEntityForName:@"Bookmark"
 							 inManagedObjectContext:context];
-	[bookmark setPath:[doc currentURL]];
+	}
+	[bookmark setUrl:[doc currentURL]];
 	[bookmark setTitle:[titleField stringValue]];
 	[bookmark setCreatedAt:[NSDate date]];
 	[bookmark setFile:chmFile];
+	[bookmark setTagsString:[tagField stringValue]];
 	if ( ![context save:&error] )
 	{
 		NSLog(@"Can not fetch file info: %d",error );
 		return;
 	}
-	
-	NSMenuItem *newitem = [[[NSMenuItem alloc] init] autorelease];
-	[newitem setTitle:bookmark.title];
-	[newitem setTarget:self];
-	[newitem setAction:@selector(openBookmark:)];
-	[newitem setRepresentedObject:bookmark];
-	[newitem setEnabled:YES];
-	[bookmarkMenu insertItem:newitem atIndex:3];
 }
 
+- (IBAction)filterBookmarks:(id)sender
+{
+	int selectedRow = [tocView selectedRow];
+	if( selectedRow >= 0 ) {
+		FetchRequestItem *item = [tocView itemAtRow:selectedRow];
+		NSError *error;
+		if ([item request])
+			[tableController fetchWithRequest:[item request] merge:NO error:&error];
+		else
+			[tableController fetch:sender];
+    }
+	
+}
 #pragma mark CoreData context
 - (NSString *)applicationSupportFolder {
 	
@@ -145,47 +238,114 @@
     return managedObjectContext;
 }
 
-#pragma mark data accessing
-- (CHMFile *)fileByPath:(NSString*)path
-{
-	if (!path)
-		return nil;
-	
-	NSManagedObjectContext *context =[self managedObjectContext];
-	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
-	NSEntityDescription *fileEntity = [NSEntityDescription
-									   entityForName:@"File" inManagedObjectContext:context];
-	[request setEntity:fileEntity];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:
-							  @"path == %@", path];
-	[request setPredicate:predicate];
-	NSError *error = nil;
-	NSArray *array = [context executeFetchRequest:request error:&error];
-	if (array == nil)
-	{
-		NSLog(@"Can not fetch file info: %d",error );
-		return nil;
-	}
-	if ([array count] == 0)
-	{
-		NSLog(@"Can not fetch file with path: %%",path );
-		return nil;
-	}
-	return [array objectAtIndex:0];
-}
-
 #pragma mark Bookmark Menu
 
-#define BOOKMAKR_LIMIT 15
+#define BOOKMARK_LIMIT 15
+
+- (NSMenuItem *)createMenuItemForBookmark:(CHMBookmark*)bm
+{
+	NSMenuItem *newitem = [[[NSMenuItem alloc] init] autorelease];
+	[newitem setTitle:bm.title];
+	[newitem setTarget:self];
+	[newitem setAction:@selector(openBookmark:)];
+	[newitem setRepresentedObject:bm];
+	[newitem setEnabled:[bm.file.isValid boolValue] ];
+	return newitem;
+}
+
+- (void)addEmptyItemToMenu:(NSMenu*)menu
+{
+	NSMenuItem *newitem = [[[NSMenuItem alloc] init] autorelease];
+	[newitem setTitle:NSLocalizedString(@"(Empty)", @"(Empty menu)")];
+	[newitem setEnabled:NO];
+	[menu addItem:newitem];	
+}
+
+- (void)groupByTagsMenuNeedsUpdate:(NSMenu*)menu
+{
+	NSArray *tags = [CHMTag allTagswithContext:[self managedObjectContext]];
+	
+	while([menu numberOfItems] != 0)
+		[menu removeItemAtIndex:0];
+	
+	if ( !tags || [tags count] == 0)
+	{
+		[self addEmptyItemToMenu:menu];
+		return;
+	}
+	
+	for (CHMTag* tag in tags)
+	{
+		NSSet * bookmarks = tag.bookmarks;
+		if ( [bookmarks count] == 0 )
+			continue;
+
+		
+		NSMenuItem *newitem = [[[NSMenuItem alloc] init] autorelease];
+		[newitem setTitle:tag.tag];
+		[newitem setEnabled:YES];
+		NSMenu *newmenu = [[[NSMenu alloc] init] autorelease];
+		[newmenu setAutoenablesItems:NO];
+		[newitem setSubmenu:newmenu];
+		for (CHMBookmark * bm in bookmarks) {
+			[newmenu addItem:[self createMenuItemForBookmark:bm]];
+		}
+		[menu addItem:newitem];
+	}
+	
+	if ([menu numberOfItems] == 0)
+		[self addEmptyItemToMenu:menu];
+}
+
+- (void)groupByFilesMenuNeedsUpdate:(NSMenu*)menu
+{
+	NSArray *files = [CHMFile allFileswithContext:[self managedObjectContext]];
+	
+	while([menu numberOfItems] != 0)
+		[menu removeItemAtIndex:0];
+	
+	if ( !files || [files count] == 0)
+	{
+		[self addEmptyItemToMenu:menu];
+		return;
+	}
+	
+	for (CHMFile* file in files)
+	{
+		NSSet * bookmarks = file.bookmarks;
+		if ( [bookmarks count] == 0 )
+			continue;
+		
+		
+		NSMenuItem *newitem = [[[NSMenuItem alloc] init] autorelease];
+		[newitem setTitle:file.title];
+		[newitem setEnabled:YES];
+		NSMenu *newmenu = [[[NSMenu alloc] init] autorelease];
+		[newmenu setAutoenablesItems:NO];
+		[newitem setSubmenu:newmenu];
+		for (CHMBookmark * bm in bookmarks) {
+			[newmenu addItem:[self createMenuItemForBookmark:bm]];
+		}
+		[menu addItem:newitem];
+	}
+	
+	if ([menu numberOfItems] == 0)
+		[self addEmptyItemToMenu:menu];
+}
 
 - (void)menuNeedsUpdate:(NSMenu *)menu
 {
 	NSDocumentController *controller = [NSDocumentController sharedDocumentController];
 	[[menu itemWithTag:0] setEnabled:(nil != [controller currentDocument])];
 
-	while ([menu numberOfItems] > 3)
+	if (menu == groupByTagsMenu)
+		return [self groupByTagsMenuNeedsUpdate:groupByTagsMenu];
+	else if (menu == groupByFilesMenu)
+		return [self groupByFilesMenuNeedsUpdate:groupByFilesMenu];
+	
+	while ([menu numberOfItems] > 0)
 	{
-		[menu removeItemAtIndex:3];
+		[menu removeItemAtIndex:0];
 	}
 	
 	NSManagedObjectContext *context =[self managedObjectContext];
@@ -193,7 +353,7 @@
 	NSEntityDescription *bookmarkEntity = [NSEntityDescription
 									   entityForName:@"Bookmark" inManagedObjectContext:context];
 	[request setEntity:bookmarkEntity];
-	[request setFetchLimit:BOOKMAKR_LIMIT];
+	[request setFetchLimit:BOOKMARK_LIMIT];
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
 										initWithKey:@"createdAt" ascending:NO];
 	[request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
@@ -207,14 +367,11 @@
 		return;
 	}
 	for (CHMBookmark* bm in array) {
-		NSMenuItem *newitem = [[[NSMenuItem alloc] init] autorelease];
-		[newitem setTitle:[bm title]];
-		[newitem setTarget:self];
-		[newitem setAction:@selector(openBookmark:)];
-		[newitem setRepresentedObject:bm];
-		[newitem setEnabled:YES];
-		[menu addItem:newitem];
+		[menu addItem:[self createMenuItemForBookmark:bm]];
 	}
+	
+	if ([menu numberOfItems] == 0)
+		[self addEmptyItemToMenu:menu];
 }
 
 - (IBAction)openBookmark:(id)sender
@@ -224,6 +381,100 @@
 	CHMBookmark * bm = (CHMBookmark*)[sender representedObject];
 	NSURL *url = [NSURL fileURLWithPath:bm.file.path];
 	CHMDocument* doc = [controller openDocumentWithContentsOfURL:url display:YES error:&error];
-	[doc loadURL:[NSURL URLWithString:bm.path]];
+	[doc loadURL:[NSURL URLWithString:bm.url]];
+}
+
+# pragma mark NSOutlineView datasource
+- (void)setupDataSource
+{
+	if(tocSource)
+		[tocSource release];
+	
+	tocSource = [[FetchRequestItem alloc] init];
+	
+	FetchRequestItem * allItem = [[FetchRequestItem alloc] init];
+	[allItem setTitle:NSLocalizedString(@"All", @"All")];
+	[tocSource addChild:allItem];
+	
+	NSManagedObjectContext *moc = [self managedObjectContext];
+	NSEntityDescription *bookmarkDescription = [NSEntityDescription
+												entityForName:@"Bookmark" 
+												inManagedObjectContext:moc];
+	
+	FetchRequestItem * tagsItem = [[FetchRequestItem alloc] init];
+	[tagsItem setTitle:NSLocalizedString(@"Tags", @"Tags")];
+	[tocSource addChild:tagsItem];	
+	for (CHMTag* tag in [CHMTag allTagswithContext:moc])
+	{
+		if ([tag.bookmarks count] == 0)
+			continue;
+		FetchRequestItem * tagItem = [[FetchRequestItem alloc] init];
+		[tagItem setTitle:tag.tag];
+		NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+		[request setEntity:bookmarkDescription];
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:
+								  @"(ANY tags.tag == %@)", tag.tag];
+		[request setPredicate:predicate];
+		[tagItem setRequest:request];
+		[tagsItem addChild:tagItem];
+	}
+	
+	FetchRequestItem * filesItem = [[FetchRequestItem alloc] init];
+	[filesItem setTitle:NSLocalizedString(@"Files", @"Files")];
+	[tocSource addChild:filesItem];	
+	for (CHMFile* file in [CHMFile allFileswithContext:moc])
+	{
+		if ([file.bookmarks count] == 0)
+			continue;
+		FetchRequestItem * fileItem = [[FetchRequestItem alloc] init];
+		[fileItem setTitle:file.title];
+		NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+		[request setEntity:bookmarkDescription];
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:
+								  @"(file == %@)", file];
+		[request setPredicate:predicate];
+		[fileItem setRequest:request];
+		[filesItem addChild:fileItem];
+	}
+	[tocView reloadData];
+}
+
+- (int)outlineView:(NSOutlineView *)outlineView
+numberOfChildrenOfItem:(id)item
+{
+	if(!item)
+		item = tocSource;
+	return [(FetchRequestItem*)item numberOfChildren];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView
+   isItemExpandable:(id)item
+{
+    return [item numberOfChildren] > 0;
+}
+
+- (id)outlineView:(NSOutlineView *)outlineView
+			child:(int)theIndex
+		   ofItem:(id)item
+{
+	if (!item)
+		item = tocSource;
+	
+    return [item childAtIndex:theIndex];
+}
+
+- (id)outlineView:(NSOutlineView *)outlineView
+objectValueForTableColumn:(NSTableColumn *)tableColumn
+		   byItem:(id)item
+{
+    return [item title];
+}
+
+#pragma mark Bookmark manager window Delegate
+- (void)windowWillClose:(NSNotification *)notification
+{
+	NSError *error;
+	[CHMFile purgeWithContext:[self managedObjectContext]];
+	[[self managedObjectContext] save:&error];
 }
 @end

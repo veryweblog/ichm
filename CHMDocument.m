@@ -78,6 +78,7 @@ static int MinSidebarWidth = 180;
 @implementation CHMDocument
 
 @synthesize filePath;
+@synthesize docTitle;
 
 - (id)init
 {
@@ -338,11 +339,11 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 }
 
 # pragma mark chmlib
-- (BOOL) exist: (const char *)path
+- (BOOL) exist: (NSString *)path
 {
 	struct chmUnitInfo info;
 	if (chmFileHandle)
-		return chm_resolve_object( chmFileHandle, path, &info ) != CHM_RESOLVE_SUCCESS;
+		return chm_resolve_object( chmFileHandle, [path UTF8String], &info ) == CHM_RESOLVE_SUCCESS;
 	return NO;
 }
 
@@ -362,26 +363,27 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
     }
     
 	struct chmUnitInfo info;
-	if (chm_resolve_object( chmFileHandle, [path UTF8String], &info ) != CHM_RESOLVE_SUCCESS)
+	void *buffer = nil;
+	@synchronized(self)
 	{
-		return nil;
+		if (chm_resolve_object( chmFileHandle, [path UTF8String], &info ) == CHM_RESOLVE_SUCCESS)
+		{    
+			buffer = malloc( info.length );
+			
+			if( buffer ) {
+				if( !chm_retrieve_object( chmFileHandle, &info, buffer, 0, info.length ) ) {
+					NSLog( @"Failed to load %qu bytes for %@", (long long)info.length, path );
+					free( buffer );
+					buffer = nil;
+				}
+			}
+		}
 	}
     
-    void *buffer = malloc( info.length );
-    
-    if( !buffer ) {
-		// Allocation failed
-		NSLog( @"Failed to allocate %qu bytes for %@", (long long)info.length, path );
-		return nil;
-    }
-    
-    if( !chm_retrieve_object( chmFileHandle, &info, buffer, 0, info.length ) ) {
-		NSLog( @"Failed to load %qu bytes for %@", (long long)info.length, path );
-		free( buffer );
-		return nil;
-    }
-    
-    return [NSData dataWithBytesNoCopy:buffer length:info.length];
+	if (buffer)
+		return [NSData dataWithBytesNoCopy:buffer length:info.length];
+	
+	return nil;
 	
 }
 
@@ -464,23 +466,22 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 			case 6:
 			{
 				const char *data = (const char *)([systemData bytes] + offset + 4);
-				char *tmpname = malloc(strlen(data)+5);
+				NSString *prefix = [[NSString alloc] initWithCString:data encoding:nameToEncoding(encodingName)];
 				if( !tocPath || [tocPath length] == 0 ) {
-					sprintf(tmpname, "/%s.hhc", data);
-					if ([self exist:tmpname])
+					NSString *path = [NSString stringWithFormat:@"/%@.hhc", prefix];
+					if ([self exist:path])
 					{
-						tocPath = [[NSString alloc] initWithCString:tmpname encoding:nameToEncoding(encodingName)];
+						tocPath = path;
 					}
 				}
 				if ( !indexPath || [indexPath length] == 0 )
 				{
-					sprintf(tmpname, "/%s.hhk", data);
-					if ([self exist:tmpname])
+					NSString *path = [NSString stringWithFormat:@"/%@.hhk", prefix];
+					if ([self exist:path])
 					{
-						indexPath = [[NSString alloc] initWithCString:tmpname encoding:nameToEncoding(encodingName)];
+						indexPath = path;
 					}
 				}
-				free(tmpname);
 				NSLog( @"SYSTEM Table of contents: %@", tocPath );
 			}
 				break;
@@ -524,17 +525,17 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
     
     NSString *separator = [basePath hasSuffix:@"/"]? @"" : @"/";
     testPath = [NSString stringWithFormat:@"%@%@index.htm", basePath, separator];
-    if( [self exist:[testPath UTF8String]] ) {
+    if( [self exist:testPath] ) {
         return testPath;
     }
 	
     testPath = [NSString stringWithFormat:@"%@%@default.html", basePath, separator];
-    if( [self exist:[testPath UTF8String]] ) {
+    if( [self exist:testPath] ) {
         return testPath;
     }
 	
     testPath = [NSString stringWithFormat:@"%@%@default.htm", basePath, separator];
-    if( [self exist:[testPath UTF8String]] ) {
+    if( [self exist:testPath] ) {
         return testPath;
     }
 	
@@ -556,8 +557,6 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 	[self setupTabBar];
 	[self addNewTab:self];
 
-	[self goHome:self];
-	
 	[tocView setDataSource:tocSource];
     [tocView setAutoresizesOutlineColumn:NO];
 	if([tocSource rootChildrenCount]==0)
@@ -568,6 +567,8 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 	float curWidth = [tocView frame].size.width;
 	if(curWidth > MinSidebarWidth)
 		sidebarWidth = curWidth;
+	
+	[self goHome:self];
 	
 	[self prepareSearchIndex];
 }
@@ -587,11 +588,23 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 }
 
 - (void)setupTOCSource{
-	if(tocPath){
+	if (tocPath && [tocPath length] > 0)
+	{
 		NSData * tocData = [self content:tocPath];
 		CHMTableOfContent* newTOC = [[CHMTableOfContent alloc] initWithData:tocData encodingName:[self currentEncodingName]];
 		CHMTableOfContent* oldTOC = tocSource;
 		tocSource = newTOC;
+		
+		if(oldTOC)
+			[oldTOC release];
+	}
+	
+	if (indexPath && [indexPath length] > 0) 
+	{
+		NSData * tocData = [self content:indexPath];
+		CHMTableOfContent* newTOC = [[CHMTableOfContent alloc] initWithData:tocData encodingName:[self currentEncodingName]];
+		CHMTableOfContent* oldTOC = indexSource;
+		indexSource = newTOC;
 		
 		if(oldTOC)
 			[oldTOC release];
@@ -655,8 +668,8 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 	[self locateTOC:sender];
 
 	// set label for tab bar
-	NSURL * url = [NSURL URLWithString:[sender mainFrameURL]];
-	NSString *path = [url path];
+	NSURL * url = [[[frame dataSource] request] URL];
+	NSString *path = [[url absoluteString] substringFromIndex:11];
 	LinkItem* item = [tocSource itemForPath:path withStack:nil];
 	NSTabViewItem *tabItem = [docTabView selectedTabViewItem];
 	NSString *name = [item name];
@@ -838,7 +851,8 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 
 - (IBAction)locateTOC:(id)sender
 {
-	NSString * path = [[NSURL URLWithString:[curWebView mainFrameURL]] path];
+	NSURL * url = [[[[curWebView mainFrame] dataSource] request] URL];
+	NSString *path = [[url absoluteString] substringFromIndex:11];
 	NSMutableArray *tocStack = [[NSMutableArray alloc] init];
 	LinkItem* item = [tocSource itemForPath:path withStack:tocStack];
 	NSEnumerator *enumerator = [tocStack reverseObjectEnumerator];
@@ -848,6 +862,7 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 	NSInteger idx = [tocView rowForItem:item];
 	NSIndexSet *idxSet = [[NSIndexSet alloc] initWithIndex:idx];
 	[tocView selectRowIndexes:idxSet byExtendingSelection:NO];
+	[tocView scrollRowToVisible:idx];
 	[tocStack release];
 }
 
@@ -1113,8 +1128,6 @@ static int forEachFile(struct chmFile *h,
 
 - (void)buildSearchIndex
 {
-	[NSThread sleepForTimeInterval:1];
-	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	chm_enumerate(chmFileHandle, CHM_ENUMERATE_FILES||CHM_ENUMERATE_NORMAL, forEachFile, (void*)self);
 	[pool release];
@@ -1156,7 +1169,12 @@ static int forEachFile(struct chmFile *h,
 	if (searchSource)
 		[searchSource release];
 	
-	searchSource = [[CHMSearchResult alloc] initwithTOC:tocSource];
+	if (indexSource)
+		searchSource = [[CHMSearchResult alloc] initwithTOC:indexSource];
+	else if (tocSource)
+		searchSource = [[CHMSearchResult alloc] initwithTOC:tocSource];
+	else
+		return;
 	
 	SKSearchOptions options = kSKSearchOptionDefault;
 	SKIndexFlush(skIndex);

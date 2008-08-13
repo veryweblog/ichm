@@ -17,6 +17,8 @@
 @property (retain) NSString * tag;
 @property (retain) NSSet* bookmarks;
 
++ (CHMTag*)getTagByString:(NSString*)tagstr OnCreate:(BOOL)shouldCreate withContext:(NSManagedObjectContext*)context;
++ (NSArray*)allTagswithContext:(NSManagedObjectContext*)context;
 @end
 
 @interface CHMTag (CoreDataGeneratedAccessors)
@@ -26,4 +28,3 @@
 - (void)removeBookmarks:(NSSet *)value;
 
 @end
-

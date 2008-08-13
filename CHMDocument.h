@@ -42,6 +42,7 @@ struct chmFile;
 	float sidebarWidth;
 	
 	CHMTableOfContent *tocSource ;
+	CHMTableOfContent *indexSource ;
 	CHMSearchResult *searchSource;
 	
 	SKIndexRef skIndex;
@@ -55,10 +56,12 @@ struct chmFile;
 }
 
 @property (readonly) NSString* filePath;
+@property (readonly) NSString* docTitle;
+
 - (NSString*)currentURL;
 - (NSString*)currentTitle;
 
-- (BOOL) exist: (const char *)path;
+- (BOOL) exist: (NSString *)path;
 - (NSData *)content: (NSString *)path;
 - (BOOL)loadMetadata;
 

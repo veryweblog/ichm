@@ -1971,6 +1971,58 @@
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
+					<string key="className">BookmarkController</string>
+					<string key="superclassName">NSWindowController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>endAddBookmark:</string>
+							<string>filterBookmarks:</string>
+							<string>openBookmark:</string>
+							<string>showAddBookmark:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addPanel</string>
+							<string>bookmarkMenu</string>
+							<string>groupByFilesMenu</string>
+							<string>groupByTagsMenu</string>
+							<string>managePanel</string>
+							<string>tableController</string>
+							<string>tagField</string>
+							<string>titleField</string>
+							<string>tocView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSWindow</string>
+							<string>NSMenu</string>
+							<string>NSMenu</string>
+							<string>NSMenu</string>
+							<string>NSPanel</string>
+							<string>NSArrayController</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSOutlineView</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">BookmarkController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">CHMDocument</string>
 					<string key="superclassName">NSDocument</string>
 					<object class="NSMutableDictionary" key="actions">
@@ -1994,6 +2046,7 @@
 							<string>locateTOC:</string>
 							<string>openInNewTab:</string>
 							<string>searchInFile:</string>
+							<string>showAddBookmark:</string>
 							<string>showFindPanel:</string>
 							<string>toggleSidebar:</string>
 							<string>zoom:</string>
@@ -2024,14 +2077,15 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>_tabView</string>
-							<string>_tocView</string>
+							<string>addBookmarkPanel</string>
+							<string>docTabView</string>
 							<string>documentWindow</string>
 							<string>historyItemView</string>
 							<string>homeItemView</string>
@@ -2041,11 +2095,12 @@
 							<string>tabBar</string>
 							<string>textEncodingMenu</string>
 							<string>textSizeItemView</string>
+							<string>tocView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSPanel</string>
 							<string>NSTabView</string>
-							<string>NSOutlineView</string>
 							<string>NSWindow</string>
 							<string>NSSegmentedControl</string>
 							<string>NSButton</string>
@@ -2055,6 +2110,7 @@
 							<string>PSMTabBarControl</string>
 							<string>NSMenuItem</string>
 							<string>NSSegmentedControl</string>
+							<string>NSOutlineView</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -2127,8 +2183,17 @@
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">textEncodingMenu</string>
-						<string key="NS.object.0">NSMenuItem</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>bookmarkController</string>
+							<string>textEncodingMenu</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>BookmarkController</string>
+							<string>NSMenuItem</string>
+						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
@@ -2140,51 +2205,9 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="972859832">
 						<string key="majorKey">IBDocumentRelativeSource</string>
-						<string key="minorKey">../../../../Library/Frameworks/Sparkle.framework/Versions/A/Headers/SUAppcast.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBDocumentRelativeSource</string>
-						<string key="minorKey">../../../../Library/Frameworks/Sparkle.framework/Versions/A/Headers/SUAutomaticUpdateAlert.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBDocumentRelativeSource</string>
-						<string key="minorKey">../../../../Library/Frameworks/Sparkle.framework/Versions/A/Headers/SUInstaller.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBDocumentRelativeSource</string>
-						<string key="minorKey">../../../../Library/Frameworks/Sparkle.framework/Versions/A/Headers/SUUnarchiver.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBDocumentRelativeSource</string>
-						<string key="minorKey">../../../../Library/Frameworks/Sparkle.framework/Versions/A/Headers/SUUpdateAlert.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBDocumentRelativeSource</string>
-						<string key="minorKey">../../../../Library/Frameworks/Sparkle.framework/Versions/A/Headers/SUUpdatePermissionPrompt.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="1046187328">
-						<string key="majorKey">IBDocumentRelativeSource</string>
-						<string key="minorKey">../../../../Library/Frameworks/Sparkle.framework/Versions/A/Headers/SUUpdater.h</string>
+						<string key="minorKey">../Frameworks/Sparkle.framework/Versions/A/Headers/SUUpdater.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -2198,7 +2221,7 @@
 						<string key="NS.key.0">delegate</string>
 						<string key="NS.object.0">id</string>
 					</object>
-					<reference key="sourceIdentifier" ref="1046187328"/>
+					<reference key="sourceIdentifier" ref="972859832"/>
 				</object>
 			</object>
 		</object>

@@ -15,8 +15,13 @@
 }
 
 @property (retain) NSString * path;
+@property (retain) NSString * title;
 @property (retain) NSSet* bookmarks;
+@property (retain) NSNumber * isValid;
 
++ (CHMFile *)fileByPath:(NSString*)path withContext:(NSManagedObjectContext*)context;
++ (NSArray*)allFileswithContext:(NSManagedObjectContext*)context;
++ (void)purgeWithContext:(NSManagedObjectContext*)context;
 @end
 
 @interface CHMFile (CoreDataGeneratedAccessors)
