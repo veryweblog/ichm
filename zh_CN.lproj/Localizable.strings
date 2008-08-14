@@ -25,3 +25,14 @@
 /* Zoom */
 "Zoom" = "缩放";
 
+/* (Empty menu) */
+"(Empty)" = "(无内容)";
+
+/* All */
+"All" = "全部";
+
+/* Files */
+"Files" = "按文件";
+
+/* Tags */
+"Tags" = "按标签";

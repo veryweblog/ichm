@@ -8,12 +8,12 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="100064"/>
 			<integer value="100115"/>
+			<integer value="100064"/>
+			<integer value="100060"/>
+			<integer value="100131"/>
 			<integer value="100099"/>
 			<integer value="100123"/>
-			<integer value="100131"/>
-			<integer value="100055"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -32,7 +32,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{52, 597}, {819, 559}}</string>
 				<int key="NSWTFlags">1886912512</int>
-				<string key="NSWindowTitle">Window</string>
+				<string key="NSWindowTitle"/>
 				<string key="NSWindowClass">NSWindow</string>
 				<string key="NSViewClass">View</string>
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
@@ -139,7 +139,7 @@
 																	<object class="NSTextFieldCell" key="NSDataCell" id="812486029">
 																		<int key="NSCellFlags">337772096</int>
 																		<int key="NSCellFlags2">2048</int>
-																		<string key="NSContents">Text Cell</string>
+																		<string key="NSContents"/>
 																		<reference key="NSSupport" ref="389328562"/>
 																		<reference key="NSControlView" ref="667450853"/>
 																		<object class="NSColor" key="NSBackgroundColor" id="99488724">
@@ -491,10 +491,10 @@
 						<object class="NSButtonCell" key="NSCell" id="588623657">
 							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">134217728</int>
-							<string key="NSContents">Round Textured</string>
+							<string key="NSContents"/>
 							<reference key="NSSupport" ref="389328562"/>
 							<reference key="NSControlView" ref="221144331"/>
-							<int key="NSButtonFlags">-2033958657</int>
+							<int key="NSButtonFlags">-2033434369</int>
 							<int key="NSButtonFlags2">163</int>
 							<object class="NSCustomResource" key="NSNormalImage">
 								<string key="NSClassName">NSImage</string>
@@ -1046,9 +1046,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{93, 402}, {819, 559}}</string>
+					<string>{{173, 73}, {819, 559}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{93, 402}, {819, 559}}</string>
+					<string>{{173, 73}, {819, 559}}</string>
 					<reference ref="9"/>
 					<integer value="0"/>
 					<string>{{201, 387}, {507, 413}}</string>

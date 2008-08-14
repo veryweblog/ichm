@@ -26,7 +26,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{52, 597}, {819, 559}}</string>
 				<int key="NSWTFlags">1886912512</int>
-				<string key="NSWindowTitle">Window</string>
+				<string key="NSWindowTitle"/>
 				<string key="NSWindowClass">NSWindow</string>
 				<string key="NSViewClass">View</string>
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
@@ -133,7 +133,7 @@
 																	<object class="NSTextFieldCell" key="NSDataCell" id="812486029">
 																		<int key="NSCellFlags">337772096</int>
 																		<int key="NSCellFlags2">2048</int>
-																		<string key="NSContents">Text Cell</string>
+																		<string key="NSContents"/>
 																		<reference key="NSSupport" ref="389328562"/>
 																		<reference key="NSControlView" ref="667450853"/>
 																		<object class="NSColor" key="NSBackgroundColor" id="99488724">
@@ -481,10 +481,10 @@
 						<object class="NSButtonCell" key="NSCell" id="588623657">
 							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">134217728</int>
-							<string key="NSContents">Round Textured</string>
+							<string key="NSContents"/>
 							<reference key="NSSupport" ref="389328562"/>
 							<reference key="NSControlView" ref="221144331"/>
-							<int key="NSButtonFlags">-2033958657</int>
+							<int key="NSButtonFlags">-2033434369</int>
 							<int key="NSButtonFlags2">163</int>
 							<object class="NSCustomResource" key="NSNormalImage">
 								<string key="NSClassName">NSImage</string>
@@ -511,14 +511,6 @@
 						<reference key="destination" ref="512844837"/>
 					</object>
 					<int key="connectionID">100033</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">_tocView</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="667450853"/>
-					</object>
-					<int key="connectionID">100073</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -617,14 +609,6 @@
 					<int key="connectionID">100121</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">_tabView</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="863789974"/>
-					</object>
-					<int key="connectionID">100122</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">goHome:</string>
 						<reference key="source" ref="512844837"/>
@@ -671,6 +655,22 @@
 						<reference key="destination" ref="221144331"/>
 					</object>
 					<int key="connectionID">100137</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">docTabView</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="863789974"/>
+					</object>
+					<int key="connectionID">100139</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tocView</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="667450853"/>
+					</object>
+					<int key="connectionID">100140</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1035,9 +1035,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{85, 518}, {819, 559}}</string>
+					<string>{{173, 73}, {819, 559}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{85, 518}, {819, 559}}</string>
+					<string>{{173, 73}, {819, 559}}</string>
 					<reference ref="9"/>
 					<integer value="0"/>
 					<string>{{201, 387}, {507, 413}}</string>
@@ -1068,7 +1068,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100137</int>
+			<int key="maxID">100157</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1097,6 +1097,7 @@
 							<string>locateTOC:</string>
 							<string>openInNewTab:</string>
 							<string>searchInFile:</string>
+							<string>showAddBookmark:</string>
 							<string>showFindPanel:</string>
 							<string>toggleSidebar:</string>
 							<string>zoom:</string>
@@ -1127,14 +1128,15 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>_tabView</string>
-							<string>_tocView</string>
+							<string>addBookmarkPanel</string>
+							<string>docTabView</string>
 							<string>documentWindow</string>
 							<string>historyItemView</string>
 							<string>homeItemView</string>
@@ -1144,11 +1146,12 @@
 							<string>tabBar</string>
 							<string>textEncodingMenu</string>
 							<string>textSizeItemView</string>
+							<string>tocView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSPanel</string>
 							<string>NSTabView</string>
-							<string>NSOutlineView</string>
 							<string>NSWindow</string>
 							<string>NSSegmentedControl</string>
 							<string>NSButton</string>
@@ -1158,6 +1161,7 @@
 							<string>PSMTabBarControl</string>
 							<string>NSMenuItem</string>
 							<string>NSSegmentedControl</string>
+							<string>NSOutlineView</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
