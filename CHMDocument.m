@@ -634,7 +634,7 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 
 - (void)loadPath:(NSString *)path
 {
-	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"itss://chm/%@", path]];
+	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"itss://chm/%@", [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 	[self loadURL:url];
 }
 
