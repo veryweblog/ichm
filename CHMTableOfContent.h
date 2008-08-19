@@ -24,9 +24,10 @@
 @interface CHMSearchResult : CHMTableOfContent
 {
 	CHMTableOfContent* tableOfContent;
+	CHMTableOfContent* indexContent;
 }
 
-- (id)initwithTOC:(CHMTableOfContent*)toc;
+- (id)initwithTOC:(CHMTableOfContent*)toc withIndex:(CHMTableOfContent*)index;
 - (void)addPath:(NSString*)path Score:(float)score;
 - (void)sort;
 @end

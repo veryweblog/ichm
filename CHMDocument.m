@@ -1169,11 +1169,8 @@ static int forEachFile(struct chmFile *h,
 	if (searchSource)
 		[searchSource release];
 	
-	if (indexSource)
-		searchSource = [[CHMSearchResult alloc] initwithTOC:indexSource];
-	else if (tocSource)
-		searchSource = [[CHMSearchResult alloc] initwithTOC:tocSource];
-	else
+	searchSource = [[CHMSearchResult alloc] initwithTOC:tocSource withIndex:indexSource];
+	if (!indexSource && !tocSource)
 		return;
 	
 	SKSearchOptions options = kSKSearchOptionDefault;

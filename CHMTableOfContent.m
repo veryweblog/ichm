@@ -296,24 +296,39 @@ static void elementDidEnd( CHMTableOfContent *context, const xmlChar *name )
 	return self;
 }
 
-- (id)initwithTOC:(CHMTableOfContent*)toc
+- (id)initwithTOC:(CHMTableOfContent*)toc withIndex:(CHMTableOfContent*)index
 {
 	[self init];
 
 	tableOfContent = toc;
-	[tableOfContent retain];
+	if (tableOfContent)
+		[tableOfContent retain];
+	
+	indexContent = index;
+	if (indexContent)
+		[indexContent retain];
+	
 	return self;
 }
 
 - (void) dealloc
 {
-	[tableOfContent release];
+	if (tableOfContent)
+		[tableOfContent release];
+
+	if (indexContent)
+		[indexContent release];
 	[super dealloc];
 }
 
 - (void)addPath:(NSString*)path Score:(float)score
 {
-	LinkItem * item = [tableOfContent itemForPath:path withStack:nil];
+	LinkItem * item = nil;
+	if (indexContent)
+		item = [indexContent itemForPath:path withStack:nil];
+	if (!item && tableOfContent)
+		item = [tableOfContent itemForPath:path withStack:nil];
+	
 	if (!item)
 		return;
 	ScoredLinkItem * newitem = [[ScoredLinkItem alloc] initWithName:[item name] Path:[item path] Score:score];
