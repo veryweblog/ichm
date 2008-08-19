@@ -1,0 +1,39 @@
+﻿/* (Empty menu) */
+"(Empty)" = "(Vacío)";
+
+/* All */
+"All" = "Todo";
+
+/* Files */
+"Files" = "Archivos";
+
+/* Tags */
+"Tags" = "Etiquetas";
+
+/* (Untitled) */
+"(Untitled)" = "(Sin título)";
+
+/* Back to Home */
+"Back to Home" = "Volver al inicio";
+
+/* History */
+"History" = "Historial";
+
+/* Home */
+"Home" = "Inicio";
+
+/* Navigate in History */
+"Navigate in History" = "Navegar por el historial";
+
+/* Search */
+"Search" = "Buscar";
+
+/* Sidebar */
+"Sidebar" = "Barra lateral";
+
+/* Toggle Sidebar */
+"Toggle Sidebar" = "Mostrar/Ocultar barra lateral";
+
+/* Zoom */
+"Zoom" = "Ampliar/Reducir";
+

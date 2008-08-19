@@ -126,6 +126,10 @@
 		C3ED1D850E4307F500C1B93A /* CHMTextEncodingMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMTextEncodingMenu.h; sourceTree = "<group>"; };
 		C3ED1D860E4307F500C1B93A /* CHMTextEncodingMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMTextEncodingMenu.m; sourceTree = "<group>"; };
 		C3ED1D9F0E43106D00C1B93A /* textencoding.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = textencoding.plist; sourceTree = "<group>"; };
+		C3FF6BAD0E585DC300F9EBC2 /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Spanish; path = Spanish.lproj/CHMDocument.xib; sourceTree = "<group>"; };
+		C3FF6BAE0E585DCF00F9EBC2 /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Spanish; path = Spanish.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C3FF6BAF0E585DD600F9EBC2 /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Spanish; path = Spanish.lproj/CHMWebView.xib; sourceTree = "<group>"; };
+		C3FF6BB00E585DDD00F9EBC2 /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Spanish; path = Spanish.lproj/Bookmark.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +324,7 @@
 				French,
 				German,
 				zh_CN,
+				Spanish,
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* ichm */;
 			projectDirPath = "";
@@ -395,6 +400,7 @@
 				1DDD582B0DA1D0D100B32029 /* English */,
 				C36FD41D0E482AFA00496822 /* German */,
 				C36FD4F60E483DD900496822 /* zh_CN */,
+				C3FF6BAE0E585DCF00F9EBC2 /* Spanish */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 				C33A4AE00E34EA7700277D64 /* English */,
 				C36FD41A0E4829B400496822 /* German */,
 				C36FD4F50E483DA800496822 /* zh_CN */,
+				C3FF6BAD0E585DC300F9EBC2 /* Spanish */,
 			);
 			name = CHMDocument.xib;
 			sourceTree = "<group>";
@@ -423,6 +430,7 @@
 				C3AA9B1D0E3EC88600D2FB53 /* English */,
 				C36FD4F70E483DE200496822 /* zh_CN */,
 				C36FD5840E48513900496822 /* German */,
+				C3FF6BAF0E585DD600F9EBC2 /* Spanish */,
 			);
 			name = CHMWebView.xib;
 			sourceTree = "<group>";
@@ -443,6 +451,7 @@
 				C33D3B1C0E4F256B00F7B487 /* English */,
 				C3D2046C0E53EFB700D5CA58 /* German */,
 				C3D2046D0E53EFBA00D5CA58 /* zh_CN */,
+				C3FF6BB00E585DDD00F9EBC2 /* Spanish */,
 			);
 			name = Bookmark.xib;
 			sourceTree = "<group>";
