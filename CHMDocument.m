@@ -26,6 +26,7 @@ static NSString*	HomeToolbarItemIdentifier       = @"Home Item Identifier";
 static NSString*	SidebarToolbarItemIdentifier       = @"Sidebar Item Identifier";
 static NSString*	WebVewPreferenceIndentifier     = @"iCHM WebView Preferences";
 static int MinSidebarWidth = 180;
+static BOOL firstDocument = YES;
 
 @interface CHMConsole : NSObject
 {
@@ -575,6 +576,19 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 	[self goHome:self];
 	
 	[self prepareSearchIndex];
+	
+	if (firstDocument)
+	{
+		NSUserDefaults *args = [NSUserDefaults standardUserDefaults];
+		NSString *searchTerm = [args stringForKey:@"search"];
+		if (searchTerm && 
+				[[searchTerm stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] > 0)
+		{
+			[searchItemView setStringValue:[searchTerm stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+			[self searchInFile:self];
+			firstDocument = NO;
+		}
+	}
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
