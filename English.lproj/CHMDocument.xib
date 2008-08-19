@@ -8,12 +8,12 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="100115"/>
+			<integer value="100123"/>
 			<integer value="100064"/>
-			<integer value="100060"/>
+			<integer value="100055"/>
+			<integer value="100115"/>
 			<integer value="100131"/>
 			<integer value="100099"/>
-			<integer value="100123"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -179,7 +179,7 @@
 																</object>
 															</object>
 															<double key="NSRowHeight">1.700000e+01</double>
-															<int key="NSTvFlags">1128300544</int>
+															<int key="NSTvFlags">1396736000</int>
 															<int key="NSColumnAutoresizingStyle">1</int>
 															<int key="NSDraggingSourceMaskForLocal">15</int>
 															<int key="NSDraggingSourceMaskForNonLocal">0</int>
@@ -1046,9 +1046,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{173, 73}, {819, 559}}</string>
+					<string>{{219, 178}, {819, 559}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{173, 73}, {819, 559}}</string>
+					<string>{{219, 178}, {819, 559}}</string>
 					<reference ref="9"/>
 					<integer value="0"/>
 					<string>{{201, 387}, {507, 413}}</string>

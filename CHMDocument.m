@@ -1254,6 +1254,7 @@ static int forEachFile(struct chmFile *h,
         }
     }
 	[searchSource sort];
+	[tocView deselectAll:self];
 	[tocView setDataSource:searchSource];
 	[tocView reloadData];
 }
