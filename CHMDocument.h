@@ -47,6 +47,9 @@ struct chmFile;
 	
 	SKIndexRef skIndex;
 	NSMutableData *searchIndexObject;
+	BOOL isIndexDone;
+	NSCondition *searchIndexCondition;
+	
 	NSMutableArray *webViews;
 	WebView *curWebView;
 	CHMConsole *console;

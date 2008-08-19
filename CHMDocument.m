@@ -97,6 +97,8 @@ static int MinSidebarWidth = 180;
 		
 		skIndex = nil;
 		searchIndexObject = nil;
+		isIndexDone = false;
+		searchIndexCondition = [[NSCondition alloc] init];
 		
 		tocSource = nil;
 		searchSource = nil;
@@ -130,6 +132,8 @@ static int MinSidebarWidth = 180;
 	if(!skIndex)
 		SKIndexClose(skIndex);
 	[searchIndexObject release];
+	[searchIndexCondition release];
+	
 	[webViews release];
     [super dealloc];
 }
@@ -1129,7 +1133,11 @@ static int forEachFile(struct chmFile *h,
 - (void)buildSearchIndex
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	[searchIndexCondition lock];
 	chm_enumerate(chmFileHandle, CHM_ENUMERATE_FILES||CHM_ENUMERATE_NORMAL, forEachFile, (void*)self);
+	isIndexDone = true;
+	[searchIndexCondition signal];
+	[searchIndexCondition unlock];
 	[pool release];
 }
 
@@ -1154,6 +1162,12 @@ static int forEachFile(struct chmFile *h,
 
 - (IBAction)searchInFile:(id)sender
 {
+	// waiting for the building of index
+	[searchIndexCondition lock];
+	while (!isIndexDone)
+		[searchIndexCondition wait];
+	[searchIndexCondition unlock];
+	
 	NSString *searchString = [searchItemView stringValue];
 	
 	if (0 == [searchString length])
