@@ -50,7 +50,7 @@
         data = [doc content:[NSString stringWithFormat:@"%@;%@", [url path], [url parameterString]] ];
     }
     else {
-        data = [doc content:[url path]];
+        data = [doc content:[[url path] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     }
     
     if( !data ) {
