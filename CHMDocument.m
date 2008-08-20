@@ -62,6 +62,7 @@ static BOOL firstDocument = YES;
 - (void)setupToolbar;
 - (void)updateHistoryButton;
 - (void)loadPath:(NSString *)path;
+- (NSURL*)composeURL:(NSString *)path;
 
 - (void)prepareSearchIndex;
 
@@ -650,9 +651,14 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 	[super close];
 }
 
+- (NSURL*)composeURL:(NSString *)path
+{
+	return [NSURL URLWithString:[NSString stringWithFormat:@"itss://chm/%@", [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+}
+
 - (void)loadPath:(NSString *)path
 {
-	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"itss://chm/%@", [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+	NSURL *url = [self composeURL:path];
 	[self loadURL:url];
 }
 
@@ -1162,7 +1168,7 @@ static int forEachFile(struct chmFile *h,
 		filepath = [filepath substringFromIndex:1];
 
 	NSData *data = [self content:filepath];
-	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"itss://chm/%@", filepath]];
+	NSURL *url = [self composeURL:filepath];
 	
 	if(!url)
 		return;
