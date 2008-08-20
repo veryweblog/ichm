@@ -655,7 +655,10 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 
 - (NSURL*)composeURL:(NSString *)path
 {
-	return [NSURL URLWithString:[NSString stringWithFormat:@"itss://chm/%@", [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"itss://chm/%@", path]];
+	if (!url)
+		url = [NSURL URLWithString:[NSString stringWithFormat:@"itss://chm/%@", [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+	return url;
 }
 
 - (NSString*)extractPathFromURL:(NSURL*)url
