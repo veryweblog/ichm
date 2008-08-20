@@ -81,8 +81,7 @@
 
 - (LinkItem*)find_by_path:(NSString *)path withStack:(NSMutableArray*)stack
 {
-	if ([_path isEqualToString:path] ||
-		[_path isEqualToString:[path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]])
+	if ([_path isEqualToString:path])
 		return self;
 	
 	if(!_children)
@@ -175,7 +174,13 @@ NULL, /* getParameterEntity */
 		path = [path substringFromIndex:1];
     }
 	
-	return [rootItems find_by_path:path withStack:stack];
+	LinkItem *item = [rootItems find_by_path:path withStack:stack];
+	if (!item)
+	{
+		NSString *encoded_path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+		item = [rootItems find_by_path:encoded_path withStack:stack];
+	}
+	return item;
 }
 
 - (int)rootChildrenCount
@@ -329,10 +334,10 @@ static void elementDidEnd( CHMTableOfContent *context, const xmlChar *name )
 - (void)addPath:(NSString*)path Score:(float)score
 {
 	LinkItem * item = nil;
-	if (indexContent)
-		item = [indexContent itemForPath:path withStack:nil];
-	if (!item && tableOfContent)
+	if (tableOfContent)
 		item = [tableOfContent itemForPath:path withStack:nil];
+	if (!item && indexContent)
+		item = [indexContent itemForPath:path withStack:nil];
 	
 	if (!item)
 		return;
