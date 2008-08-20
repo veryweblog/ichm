@@ -491,13 +491,12 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 					}
 				}
 				NSLog( @"SYSTEM Table of contents: %@", tocPath );
+				[prefix release];
 			}
 				break;
 			case 9:
-				NSLog( @"SYSTEM Compiler: %@", readString( systemData, offset + 4, encodingName ) );
 				break;
 			case 16:
-				NSLog( @"SYSTEM Default font: %@", readString( systemData, offset + 4, encodingName ) );
 				break;
 			default:
 				NSLog(@"SYSTEM unhandled value:%d", readShort( systemData, offset ));
@@ -898,6 +897,7 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 	[tocView selectRowIndexes:idxSet byExtendingSelection:NO];
 	[tocView scrollRowToVisible:idx];
 	[tocStack release];
+	[idxSet release];
 }
 
 - (IBAction)zoomIn:(id)sender
@@ -1195,6 +1195,7 @@ static int forEachFile(struct chmFile *h,
 		contents = [[NSString alloc] initWithData:data encoding:NSISOLatin1StringEncoding];
 	
 	SKIndexAddDocumentWithText (skIndex,doc,(CFStringRef) contents,(Boolean) true);
+	[contents release];
 }
 
 - (IBAction)searchInFile:(id)sender

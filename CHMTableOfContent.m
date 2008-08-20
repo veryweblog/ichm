@@ -269,11 +269,15 @@ static void elementDidStart( CHMTableOfContent *context, const xmlChar *name, co
 		if( ( type != NULL ) && ( value != NULL ) ) {
 			if( !strcasecmp( "Name", (char *)type ) ) {
 				// Name of the topic
-				[[context curItem] setName:[[NSString alloc] initWithUTF8String:(char *)value]];
+				NSString *str = [[NSString alloc] initWithUTF8String:(char *)value];
+				[[context curItem] setName:str];
+				[str release];
 			}
 			else if( !strcasecmp( "Local", (char *)type ) ) {
 				// Path of the topic
-				[[context curItem] setPath:[[NSString alloc] initWithUTF8String:(char *)value]]; 
+				NSString *str = [[NSString alloc] initWithUTF8String:(char *)value];
+				[[context curItem] setPath:str]; 
+				[str release];
 			}
 		}
         return;
