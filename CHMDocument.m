@@ -62,7 +62,9 @@ static BOOL firstDocument = YES;
 - (void)setupToolbar;
 - (void)updateHistoryButton;
 - (void)loadPath:(NSString *)path;
+
 - (NSURL*)composeURL:(NSString *)path;
+- (NSString*)extractPathFromURL:(NSURL*)url;
 
 - (void)prepareSearchIndex;
 
@@ -656,6 +658,11 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 	return [NSURL URLWithString:[NSString stringWithFormat:@"itss://chm/%@", [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 }
 
+- (NSString*)extractPathFromURL:(NSURL*)url
+{
+	return [[[url absoluteString] substringFromIndex:11] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
 - (void)loadPath:(NSString *)path
 {
 	NSURL *url = [self composeURL:path];
@@ -693,7 +700,7 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 
 	// set label for tab bar
 	NSURL * url = [[[frame dataSource] request] URL];
-	NSString *path = [[url absoluteString] substringFromIndex:11];
+	NSString *path = [self extractPathFromURL:url];
 	LinkItem* item = [tocSource itemForPath:path withStack:nil];
 	NSTabViewItem *tabItem = [docTabView selectedTabViewItem];
 	NSString *name = [item name];
@@ -876,7 +883,7 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 - (IBAction)locateTOC:(id)sender
 {
 	NSURL * url = [[[[curWebView mainFrame] dataSource] request] URL];
-	NSString *path = [[url absoluteString] substringFromIndex:11];
+	NSString *path = [self extractPathFromURL:url];
 	NSMutableArray *tocStack = [[NSMutableArray alloc] init];
 	LinkItem* item = [tocSource itemForPath:path withStack:tocStack];
 	NSEnumerator *enumerator = [tocStack reverseObjectEnumerator];

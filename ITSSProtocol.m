@@ -45,13 +45,19 @@
     }
 	
     NSData *data;
-    
+    NSString *path;
     if( [url parameterString] ) {
-        data = [doc content:[NSString stringWithFormat:@"%@;%@", [url path], [url parameterString]] ];
+		path = [NSString stringWithFormat:@"%@;%@", [url path], [url parameterString]];
     }
     else {
-        data = [doc content:[[url path] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+		path = [url path];
     }
+	
+	if (![doc exist:path])
+	{
+		path = [path stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	}
+	data = [doc content:path];
     
     if( !data ) {
 		[[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSURLErrorDomain code:0 userInfo:nil]];
