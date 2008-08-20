@@ -81,7 +81,8 @@
 
 - (LinkItem*)find_by_path:(NSString *)path withStack:(NSMutableArray*)stack
 {
-	if ([_path isEqualToString:path])
+	if ([_path isEqualToString:path] ||
+		[_path isEqualToString:[path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]])
 		return self;
 	
 	if(!_children)

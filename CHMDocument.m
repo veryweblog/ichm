@@ -1184,6 +1184,13 @@ static int forEachFile(struct chmFile *h,
 	[(id) doc autorelease];
 
 	NSString *contents = [[NSString alloc] initWithData:data encoding:nameToEncoding(encodingName)];
+	
+	// if the encoding being set is invalid, try following encoding.
+	if (!contents && data && [data length] > 0)
+		contents = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	if (!contents && data && [data length] > 0)
+		contents = [[NSString alloc] initWithData:data encoding:NSISOLatin1StringEncoding];
+	
 	SKIndexAddDocumentWithText (skIndex,doc,(CFStringRef) contents,(Boolean) true);
 }
 
