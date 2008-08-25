@@ -67,6 +67,11 @@
 	return _name;
 }
 
+- (NSString *)uppercaseName
+{
+	return [_name uppercaseString];
+}
+
 - (NSString *)path
 {
 	return _path;
@@ -98,6 +103,16 @@
 	}
 	
 	return nil;
+}
+
+- (void)sort
+{
+	NSSortDescriptor *sd = [[NSSortDescriptor alloc] initWithKey:@"uppercaseName" ascending:YES];
+	NSMutableArray * sda = [[NSMutableArray alloc] init];
+	[sda addObject:sd];
+	[_children sortUsingDescriptors:sda];
+	[sda release];
+	[sd release];	
 }
 @end
 
@@ -187,7 +202,13 @@ NULL, /* getParameterEntity */
 {
 	return [rootItems numberOfChildren];
 }
-# pragma mark NSOutlineView
+
+- (void)sort
+{
+	[rootItems sort];	
+}
+
+# pragma mark NSOutlineView datasource
 - (int)outlineView:(NSOutlineView *)outlineView
 numberOfChildrenOfItem:(id)item
 {
@@ -275,7 +296,8 @@ static void elementDidStart( CHMTableOfContent *context, const xmlChar *name, co
 			if( !strcasecmp( "Name", (char *)type ) ) {
 				// Name of the topic
 				NSString *str = [[NSString alloc] initWithUTF8String:(char *)value];
-				[[context curItem] setName:str];
+				if (![[context curItem] name])
+					[[context curItem] setName:str];
 				[str release];
 			}
 			else if( !strcasecmp( "Local", (char *)type ) ) {

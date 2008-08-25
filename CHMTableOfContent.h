@@ -19,6 +19,7 @@
 - (id)initWithData:(NSData *)data encodingName:(NSString*)encodingName;
 - (LinkItem *)itemForPath:(NSString*)path withStack:(NSMutableArray*)stack;
 - (int)rootChildrenCount;
+- (void)sort;
 @end
 
 @interface CHMSearchResult : CHMTableOfContent
@@ -29,7 +30,6 @@
 
 - (id)initwithTOC:(CHMTableOfContent*)toc withIndex:(CHMTableOfContent*)index;
 - (void)addPath:(NSString*)path Score:(float)score;
-- (void)sort;
 @end
 
 @interface LinkItem	: NSObject
@@ -43,11 +43,13 @@
 - (int)numberOfChildren;
 - (LinkItem *)childAtIndex:(int)n;
 - (NSString *)name;
+- (NSString *)uppercaseName;
 - (NSString *)path;
 - (void)setName:(NSString *)name;
 - (void)setPath:(NSString *)path;
 - (void)appendChild:(LinkItem *)item;
 - (LinkItem*)find_by_path:(NSString *)path withStack:(NSMutableArray*)stack;
+- (void)sort;
 @end
 
 @interface ScoredLinkItem : LinkItem
@@ -58,5 +60,4 @@
 @property (readwrite, assign) float relScore;
 
 - (id)initWithName:(NSString *)name Path:(NSString *)path Score:(float)score;
-- (void)sort;
 @end

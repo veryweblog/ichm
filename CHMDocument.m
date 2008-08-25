@@ -625,6 +625,7 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 		CHMTableOfContent* newTOC = [[CHMTableOfContent alloc] initWithData:tocData encodingName:[self currentEncodingName]];
 		CHMTableOfContent* oldTOC = indexSource;
 		indexSource = newTOC;
+		[indexSource sort];
 		
 		if(oldTOC)
 			[oldTOC release];
@@ -703,7 +704,7 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 	// set label for tab bar
 	NSURL * url = [[[frame dataSource] request] URL];
 	NSString *path = [self extractPathFromURL:url];
-	LinkItem* item = [tocSource itemForPath:path withStack:nil];
+	LinkItem* item = [[tocView dataSource] itemForPath:path withStack:nil];
 	NSTabViewItem *tabItem = [docTabView selectedTabViewItem];
 	NSString *name = [item name];
 	if(name && [name length]>0)
@@ -887,7 +888,7 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 	NSURL * url = [[[[curWebView mainFrame] dataSource] request] URL];
 	NSString *path = [self extractPathFromURL:url];
 	NSMutableArray *tocStack = [[NSMutableArray alloc] init];
-	LinkItem* item = [tocSource itemForPath:path withStack:tocStack];
+	LinkItem* item = [[tocView dataSource] itemForPath:path withStack:tocStack];
 	NSEnumerator *enumerator = [tocStack reverseObjectEnumerator];
 	for (LinkItem *p in enumerator) {
 		[tocView expandItem:p];
@@ -1210,11 +1211,11 @@ static int forEachFile(struct chmFile *h,
 	
 	if (0 == [searchString length])
 	{
-		[tocView setDataSource:tocSource];
+		[self changeToContentsView:sender];
+
 		[searchSource release];
 		[self removeHighlight];
 		searchSource = nil;
-		[self locateTOC:sender];
 		return;
 	}
 	
@@ -1280,6 +1281,8 @@ static int forEachFile(struct chmFile *h,
 	[searchSource sort];
 	[tocView deselectAll:self];
 	[tocView setDataSource:searchSource];
+	[[[tocView outlineTableColumn] headerCell] setStringValue:NSLocalizedString(@"Search", @"Search")];
+
 	[tocView reloadData];
 }
 # pragma mark find panel
@@ -1418,4 +1421,44 @@ static int forEachFile(struct chmFile *h,
 	
 	[bookmarkController showAddBookmark:self];
 }
+
+#pragma mark sidebar view changing
+- (IBAction)popViewMenu:(id)sender
+{
+	NSButton *button = (NSButton*)sender;
+	NSMenu *menu = [sender menu];
+	NSMenuItem *indexItem = [menu itemWithTag:2];
+	if (!indexSource)
+		[indexItem setEnabled:NO];
+	[NSMenu popUpContextMenu:menu withEvent:[NSApp currentEvent] forView:button];
+}
+
+- (void)resetViewMenuState:(NSMenuItem*)sender
+{
+	NSMenu * menu = [(NSMenuItem*)sender menu];
+	for (NSMenuItem *item in [menu itemArray])
+	{
+		[item setState:NSOffState];
+	}
+	[sender setState:NSOnState];	
+}
+
+- (IBAction)changeToContentsView:(id)sender
+{
+	[tocView setDataSource:tocSource];
+	[[[tocView outlineTableColumn] headerCell] setStringValue:NSLocalizedString(@"Contents", @"Contents")];
+	[self resetViewMenuState:sender];
+	[self locateTOC:sender];
+}
+
+- (IBAction)changeToIndexView:(id)sender
+{
+	if (indexSource)
+	{
+		[tocView setDataSource:indexSource];
+		[[[tocView outlineTableColumn] headerCell] setStringValue:NSLocalizedString(@"Index", @"Index")];
+		[self resetViewMenuState:sender];
+	}
+}
+
 @end

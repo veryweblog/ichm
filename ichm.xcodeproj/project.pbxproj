@@ -29,6 +29,7 @@
 		C35B9BDF0E39E48D00A63BC3 /* PSMTabBarControl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C35B9BCD0E39E38500A63BC3 /* PSMTabBarControl.framework */; };
 		C36FD4240E482D3800496822 /* CHMWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C36FD4230E482D3800496822 /* CHMWebView.xib */; };
 		C36FD52C0E48403F00496822 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C36FD52B0E48403F00496822 /* Localizable.strings */; };
+		C39A12160E607D330009C875 /* view.tif in Resources */ = {isa = PBXBuildFile; fileRef = C39A12150E607D330009C875 /* view.tif */; };
 		C3A79CC30E30438B00FF4485 /* CHMTableOfContent.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A79CC20E30438B00FF4485 /* CHMTableOfContent.m */; };
 		C3AA9B220E3EC8A200D2FB53 /* CHMWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3AA9B210E3EC8A200D2FB53 /* CHMWebView.m */; };
 		C3BF8BA00E4FDD7200AE3BEE /* CHMBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8B9F0E4FDD7200AE3BEE /* CHMBookmark.m */; };
@@ -102,6 +103,7 @@
 		C36FD52D0E48404B00496822 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C36FD5830E4850F100496822 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C36FD5840E48513900496822 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/CHMWebView.xib; sourceTree = "<group>"; };
+		C39A12150E607D330009C875 /* view.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = view.tif; sourceTree = "<group>"; };
 		C3A79CC10E30438B00FF4485 /* CHMTableOfContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMTableOfContent.h; sourceTree = "<group>"; };
 		C3A79CC20E30438B00FF4485 /* CHMTableOfContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMTableOfContent.m; sourceTree = "<group>"; };
 		C3AA9B1D0E3EC88600D2FB53 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/CHMWebView.xib; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		C3C082260E4557F900D58E19 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C39A12150E607D330009C875 /* view.tif */,
 				C33BB2040E46DA100026F435 /* ichm_file.icns */,
 				C30F2B2E0E42135C003A17A7 /* home.png */,
 				C35B99F90E39C23400A63BC3 /* redbird.icns */,
@@ -355,6 +358,7 @@
 				C33BB2050E46DA100026F435 /* ichm_file.icns in Resources */,
 				C36FD52C0E48403F00496822 /* Localizable.strings in Resources */,
 				C3D2046B0E53EFAF00D5CA58 /* Bookmark.xib in Resources */,
+				C39A12160E607D330009C875 /* view.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

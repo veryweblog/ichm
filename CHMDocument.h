@@ -87,6 +87,12 @@ struct chmFile;
 
 - (IBAction)searchInFile:(id)sender;
 
+// sidebar view
+- (IBAction)popViewMenu:(id)sender;
+- (IBAction)changeToContentsView:(id)sender;
+- (IBAction)changeToIndexView:(id)sender;
+- (void)resetViewMenuState:(NSMenuItem*)sender;
+
 - (IBAction)zoom:(id)sender;
 - (IBAction)zoomIn:(id)sender;
 - (IBAction)zoomOut:(id)sender;
