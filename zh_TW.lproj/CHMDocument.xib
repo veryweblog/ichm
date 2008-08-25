@@ -8,13 +8,6 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="100064"/>
-			<integer value="100055"/>
-			<integer value="100163"/>
-			<integer value="100131"/>
-			<integer value="100123"/>
-			<integer value="100115"/>
-			<integer value="100099"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -39,7 +32,7 @@
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSWindowContentMinSize">{94, 86}</string>
 				<object class="NSView" key="NSWindowView" id="568628114">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -125,7 +118,7 @@
 																	<object class="NSTableHeaderCell" key="NSHeaderCell">
 																		<int key="NSCellFlags">75628032</int>
 																		<int key="NSCellFlags2">0</int>
-																		<string key="NSContents">Contents</string>
+																		<string type="base64-UTF8" key="NSContents">55uu6YyEA</string>
 																		<object class="NSFont" key="NSSupport">
 																			<string key="NSName">LucidaGrande</string>
 																			<double key="NSSize">1.100000e+01</double>
@@ -306,7 +299,6 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{819, 559}</string>
-					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{94, 108}</string>
@@ -317,7 +309,7 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSCustomView" id="307481529">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">256</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -364,7 +356,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{109, 40}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="37771630">
@@ -446,7 +437,7 @@
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="815097467">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -489,7 +480,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{97, 40}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSMenu" id="590169457">
@@ -498,7 +488,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSMenuItem" id="437233693">
 						<reference key="NSMenu" ref="590169457"/>
-						<string key="NSTitle">Open In New Tab</string>
+						<string type="base64-UTF8" key="NSTitle">5Zyo5paw5qiZ57GW6aCB5Lit5omT6ZaLA</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<object class="NSCustomResource" key="NSOnImage" id="888656195">
@@ -513,7 +503,7 @@
 				</object>
 			</object>
 			<object class="NSCustomView" id="752860054">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -543,11 +533,10 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{98, 43}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="117214111">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -577,7 +566,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{97, 43}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSMenu" id="241538245">
@@ -586,7 +574,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSMenuItem" id="356937972">
 						<reference key="NSMenu" ref="241538245"/>
-						<string key="NSTitle">Contents</string>
+						<string type="base64-UTF8" key="NSTitle">55uu6YyEA</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<int key="NSState">1</int>
@@ -596,7 +584,7 @@
 					</object>
 					<object class="NSMenuItem" id="389535723">
 						<reference key="NSMenu" ref="241538245"/>
-						<string key="NSTitle">Index</string>
+						<string type="base64-UTF8" key="NSTitle">57Si5byVA</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="888656195"/>
@@ -1309,7 +1297,6 @@
 							<string>locateTOC:</string>
 							<string>openInNewTab:</string>
 							<string>popViewMenu:</string>
-							<string>resetViewMenuState:</string>
 							<string>searchInFile:</string>
 							<string>showAddBookmark:</string>
 							<string>showFindPanel:</string>
@@ -1339,7 +1326,6 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
-							<string>NSMenuItem</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>

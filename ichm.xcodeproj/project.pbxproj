@@ -103,6 +103,12 @@
 		C36FD52D0E48404B00496822 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C36FD5830E4850F100496822 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C36FD5840E48513900496822 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/CHMWebView.xib; sourceTree = "<group>"; };
+		C38B8E840E627FDD00E0DC42 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/CHMDocument.xib; sourceTree = "<group>"; };
+		C38B8E850E627FE600E0DC42 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C38B8E860E627FEC00E0DC42 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/CHMWebView.xib; sourceTree = "<group>"; };
+		C38B8E870E627FF300E0DC42 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/Bookmark.xib; sourceTree = "<group>"; };
+		C38B8E880E627FFA00E0DC42 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C38B8EA00E628B8D00E0DC42 /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Spanish; path = Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C39A12150E607D330009C875 /* view.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = view.tif; sourceTree = "<group>"; };
 		C3A79CC10E30438B00FF4485 /* CHMTableOfContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMTableOfContent.h; sourceTree = "<group>"; };
 		C3A79CC20E30438B00FF4485 /* CHMTableOfContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMTableOfContent.m; sourceTree = "<group>"; };
@@ -329,6 +335,7 @@
 				German,
 				zh_CN,
 				Spanish,
+				zh_TW,
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* ichm */;
 			projectDirPath = "";
@@ -422,6 +429,7 @@
 				C36FD41D0E482AFA00496822 /* German */,
 				C36FD4F60E483DD900496822 /* zh_CN */,
 				C3FF6BAE0E585DCF00F9EBC2 /* Spanish */,
+				C38B8E850E627FE600E0DC42 /* zh_TW */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -441,6 +449,7 @@
 				C36FD41A0E4829B400496822 /* German */,
 				C36FD4F50E483DA800496822 /* zh_CN */,
 				C3FF6BAD0E585DC300F9EBC2 /* Spanish */,
+				C38B8E840E627FDD00E0DC42 /* zh_TW */,
 			);
 			name = CHMDocument.xib;
 			sourceTree = "<group>";
@@ -452,6 +461,7 @@
 				C36FD4F70E483DE200496822 /* zh_CN */,
 				C36FD5840E48513900496822 /* German */,
 				C3FF6BAF0E585DD600F9EBC2 /* Spanish */,
+				C38B8E860E627FEC00E0DC42 /* zh_TW */,
 			);
 			name = CHMWebView.xib;
 			sourceTree = "<group>";
@@ -462,6 +472,8 @@
 				C36FD5290E48403A00496822 /* English */,
 				C36FD52D0E48404B00496822 /* zh_CN */,
 				C36FD5830E4850F100496822 /* German */,
+				C38B8E880E627FFA00E0DC42 /* zh_TW */,
+				C38B8EA00E628B8D00E0DC42 /* Spanish */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -473,6 +485,7 @@
 				C3D2046C0E53EFB700D5CA58 /* German */,
 				C3D2046D0E53EFBA00D5CA58 /* zh_CN */,
 				C3FF6BB00E585DDD00F9EBC2 /* Spanish */,
+				C38B8E870E627FF300E0DC42 /* zh_TW */,
 			);
 			name = Bookmark.xib;
 			sourceTree = "<group>";
