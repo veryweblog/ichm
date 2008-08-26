@@ -114,6 +114,20 @@
 	[sda release];
 	[sd release];	
 }
+
+- (void)purge
+{
+	NSMutableIndexSet *set = [[NSMutableIndexSet alloc] init];
+	for (LinkItem * item in _children) {
+		if ([item name] == nil && [item path] == nil && [item numberOfChildren] == 0)
+			[set addIndex:[_children indexOfObject:item]];
+		else
+			[item purge];
+	}
+	
+	[_children removeObjectsAtIndexes:set];
+	[set release];
+}
 @end
 
 @interface CHMTableOfContent (Private)
@@ -172,7 +186,7 @@ NULL, /* getParameterEntity */
 	if( doc ) {
 	    xmlFreeDoc( doc );
 	}
-	
+	[rootItems purge];
 	return self;
 }
 

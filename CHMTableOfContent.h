@@ -45,6 +45,7 @@
 - (NSString *)name;
 - (NSString *)uppercaseName;
 - (NSString *)path;
+- (void)purge;
 - (void)setName:(NSString *)name;
 - (void)setPath:(NSString *)path;
 - (void)appendChild:(LinkItem *)item;
