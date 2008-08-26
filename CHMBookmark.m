@@ -25,8 +25,11 @@
 	for (CHMTag * tag in self.tags) {
 		[str appendFormat:@"%@, ", tag.tag];
 	}
-	NSRange range = {[str length] - 2, 2};
-	[str deleteCharactersInRange:range];
+	if ([str length] > 2)
+	{
+		NSRange range = {[str length] - 2, 2};
+		[str deleteCharactersInRange:range];
+	}
 	return str;
 }
 
