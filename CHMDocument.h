@@ -30,6 +30,7 @@ struct chmFile;
 	IBOutlet NSSplitView *splitView;
 	IBOutlet NSMenuItem *textEncodingMenu;
 	IBOutlet NSPanel *addBookmarkPanel;
+	IBOutlet NSMenu *sidebarViewMenu;
 	
 	struct chmFile *chmFileHandle;
 	NSString *filePath;
@@ -92,6 +93,7 @@ struct chmFile;
 - (IBAction)changeToContentsView:(id)sender;
 - (IBAction)changeToIndexView:(id)sender;
 - (void)resetViewMenuState:(NSMenuItem*)sender;
+- (void)resetSidebarView;
 
 - (IBAction)zoom:(id)sender;
 - (IBAction)zoomIn:(id)sender;

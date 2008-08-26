@@ -1211,7 +1211,7 @@ static int forEachFile(struct chmFile *h,
 	
 	if (0 == [searchString length])
 	{
-		[self changeToContentsView:sender];
+		[self resetSidebarView];
 
 		[searchSource release];
 		[self removeHighlight];
@@ -1461,4 +1461,15 @@ static int forEachFile(struct chmFile *h,
 	}
 }
 
+- (void)resetSidebarView
+{
+	NSMenu * menu = sidebarViewMenu;
+	for (NSMenuItem *item in [menu itemArray])
+	{
+		if ([item state] == NSOnState)
+		{
+			[self performSelector:[item action] withObject:item]; 
+		}
+	}	
+}
 @end
