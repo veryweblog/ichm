@@ -1199,6 +1199,59 @@ static int forEachFile(struct chmFile *h,
 	[contents release];
 }
 
+- (IBAction)setSearchInFile:(id)sender
+{
+	[searchItemView setAction:@selector(searchInFile:)];
+	NSSearchFieldCell *cell  = [searchItemView cell];
+	NSMenu *menu = [sender menu];
+	NSMenuItem *item = [menu itemWithTag:1];
+	[item setState:NSOnState];
+	[[menu itemWithTag:2] setState:NSOffState];
+	[cell setPlaceholderString:[item title]];
+}
+
+- (IBAction)setSearchInIndex:(id)sender
+{
+	[searchItemView setAction:@selector(searchInIndex:)];
+	NSSearchFieldCell *cell  = [searchItemView cell];
+	NSMenu *menu = [sender menu];
+	NSMenuItem *item = [menu itemWithTag:2];
+	[item setState:NSOnState];
+	[[menu itemWithTag:1] setState:NSOffState];
+	[cell setPlaceholderString:[item title]];
+}
+
+- (IBAction)searchInIndex:(id)sender
+{
+	NSString *searchString = [searchItemView stringValue];
+	
+	if (0 == [searchString length])
+	{
+		[self resetSidebarView];
+		
+		[searchSource release];
+		[self removeHighlight];
+		searchSource = nil;
+		return;
+	}
+	
+	if (searchSource)
+		[searchSource release];
+
+	if (!indexSource)
+		return;
+	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name beginswith[c] %@ ", searchString ];
+	searchSource = [[CHMTableOfContent alloc]
+					initWithTOC:indexSource filterByPredicate:predicate];
+	
+	[tocView deselectAll:self];
+	[tocView setDataSource:searchSource];
+	[[[tocView outlineTableColumn] headerCell] setStringValue:NSLocalizedString(@"Search", @"Search")];
+	
+	[tocView reloadData];	
+}
+
 - (IBAction)searchInFile:(id)sender
 {
 	// waiting for the building of index

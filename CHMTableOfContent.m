@@ -77,6 +77,11 @@
 	return _path;
 }
 
+- (NSMutableArray*)children
+{
+	return _children;
+}
+
 - (void)appendChild:(LinkItem *)item
 {
 	if(!_children)
@@ -138,6 +143,7 @@
 @end
 
 @implementation CHMTableOfContent
+@synthesize rootItems;
 
 static void elementDidStart( CHMTableOfContent *toc, const xmlChar *name, const xmlChar **atts );
 static void elementDidEnd( CHMTableOfContent *toc, const xmlChar *name );
@@ -187,6 +193,20 @@ NULL, /* getParameterEntity */
 	    xmlFreeDoc( doc );
 	}
 	[rootItems purge];
+	return self;
+}
+
+- (id)initWithTOC:(CHMTableOfContent*)toc filterByPredicate:(NSPredicate*)predicate
+{
+	rootItems = [[LinkItem alloc] initWithName:@"root"	Path:@"/"];
+	NSMutableArray *children = [rootItems children];
+	if (toc)
+	{
+		LinkItem * items = [toc rootItems];
+		NSArray *src_children = [items children];
+		NSArray *results = [src_children filteredArrayUsingPredicate:predicate];
+		[children addObjectsFromArray:results];
+	}
 	return self;
 }
 

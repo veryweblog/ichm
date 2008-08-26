@@ -9,11 +9,13 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="100163"/>
+			<integer value="100175"/>
 			<integer value="100055"/>
 			<integer value="100123"/>
 			<integer value="100115"/>
 			<integer value="100099"/>
 			<integer value="100064"/>
+			<integer value="100094"/>
 			<integer value="100131"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -368,14 +370,14 @@
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="37771630">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSSearchField" id="174517111">
 						<reference key="NSNextResponder" ref="37771630"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{0, 20}, {136, 22}}</string>
+						<string key="NSFrame">{{0, 20}, {194, 22}}</string>
 						<reference key="NSSuperview" ref="37771630"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSearchFieldCell" key="NSCell" id="817225286">
@@ -383,6 +385,7 @@
 							<int key="NSCellFlags2">268436480</int>
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="389328562"/>
+							<string key="NSPlaceholderString">Search in File</string>
 							<reference key="NSControlView" ref="174517111"/>
 							<bool key="NSDrawsBackground">YES</bool>
 							<int key="NSTextBezelStyle">1</int>
@@ -442,7 +445,8 @@
 						</object>
 					</object>
 				</object>
-				<string key="NSFrameSize">{156, 42}</string>
+				<string key="NSFrameSize">{266, 42}</string>
+				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="815097467">
@@ -605,6 +609,35 @@
 					</object>
 				</object>
 				<bool key="NSNoAutoenable">YES</bool>
+			</object>
+			<object class="NSMenu" id="466037443">
+				<string key="NSTitle">search mod</string>
+				<object class="NSMutableArray" key="NSMenuItems">
+					<bool key="EncodedWithXMLCoder">YES</bool>
+					<object class="NSMenuItem" id="501686490">
+						<reference key="NSMenu" ref="466037443"/>
+						<string key="NSTitle">Search in File</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<int key="NSState">1</int>
+						<reference key="NSOnImage" ref="888656195"/>
+						<reference key="NSMixedImage" ref="456085450"/>
+						<int key="NSTag">1</int>
+					</object>
+					<object class="NSMenuItem" id="524452004">
+						<reference key="NSMenu" ref="466037443"/>
+						<string key="NSTitle">Search in Index</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="888656195"/>
+						<reference key="NSMixedImage" ref="456085450"/>
+						<int key="NSTag">2</int>
+					</object>
+				</object>
+				<bool key="NSNoAutoenable">YES</bool>
+			</object>
+			<object class="NSUserDefaultsController" id="956390096">
+				<bool key="NSSharedInstance">YES</bool>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -817,6 +850,50 @@
 						<reference key="destination" ref="241538245"/>
 					</object>
 					<int key="connectionID">100174</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">searchMenuTemplate</string>
+						<reference key="source" ref="174517111"/>
+						<reference key="destination" ref="466037443"/>
+					</object>
+					<int key="connectionID">100179</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">setSearchInFile:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="501686490"/>
+					</object>
+					<int key="connectionID">100180</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">setSearchInIndex:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="524452004"/>
+					</object>
+					<int key="connectionID">100181</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: indexSource</string>
+						<reference key="source" ref="524452004"/>
+						<reference key="destination" ref="512844837"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="524452004"/>
+							<reference key="NSDestination" ref="512844837"/>
+							<string key="NSLabel">enabled: indexSource</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">indexSource</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSValueTransformerName</string>
+								<string key="NS.object.0">NSIsNotNil</string>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">100187</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1143,6 +1220,31 @@
 						<reference key="object" ref="389535723"/>
 						<reference key="parent" ref="241538245"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100175</int>
+						<reference key="object" ref="466037443"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="501686490"/>
+							<reference ref="524452004"/>
+						</object>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100176</int>
+						<reference key="object" ref="501686490"/>
+						<reference key="parent" ref="466037443"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100177</int>
+						<reference key="object" ref="524452004"/>
+						<reference key="parent" ref="466037443"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100182</int>
+						<reference key="object" ref="956390096"/>
+						<reference key="parent" ref="0"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1194,6 +1296,10 @@
 					<string>100163.IBPluginDependency</string>
 					<string>100164.IBPluginDependency</string>
 					<string>100165.IBPluginDependency</string>
+					<string>100175.IBEditorWindowLastContentRect</string>
+					<string>100175.IBPluginDependency</string>
+					<string>100176.IBPluginDependency</string>
+					<string>100177.IBPluginDependency</string>
 					<string>5.IBEditorWindowLastContentRect</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBWindowTemplateEditedContentRect</string>
@@ -1224,7 +1330,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{661, 770}, {156, 42}}</string>
+					<string>{{400, 680}, {266, 42}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1250,6 +1356,10 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{437, 943}, {116, 43}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>{{688, 849}, {160, 43}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1286,7 +1396,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100174</int>
+			<int key="maxID">100187</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1319,6 +1429,9 @@
 							<string>popViewMenu:</string>
 							<string>resetViewMenuState:</string>
 							<string>searchInFile:</string>
+							<string>searchInIndex:</string>
+							<string>setSearchInFile:</string>
+							<string>setSearchInIndex:</string>
 							<string>showAddBookmark:</string>
 							<string>showFindPanel:</string>
 							<string>toggleSidebar:</string>
@@ -1348,6 +1461,9 @@
 							<string>id</string>
 							<string>id</string>
 							<string>NSMenuItem</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>

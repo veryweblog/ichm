@@ -15,8 +15,10 @@
 	NSMutableArray *itemStack;
 	LinkItem *curItem;
 }
+@property (readonly) LinkItem *rootItems;
 
 - (id)initWithData:(NSData *)data encodingName:(NSString*)encodingName;
+- (id)initWithTOC:(CHMTableOfContent*)toc filterByPredicate:(NSPredicate*)predicate;
 - (LinkItem *)itemForPath:(NSString*)path withStack:(NSMutableArray*)stack;
 - (int)rootChildrenCount;
 - (void)sort;
@@ -45,6 +47,7 @@
 - (NSString *)name;
 - (NSString *)uppercaseName;
 - (NSString *)path;
+- (NSMutableArray*)children;
 - (void)purge;
 - (void)setName:(NSString *)name;
 - (void)setPath:(NSString *)path;

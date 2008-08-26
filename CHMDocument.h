@@ -86,7 +86,11 @@ struct chmFile;
 
 - (IBAction)locateTOC:(id)sender;
 
+// search
+- (IBAction)setSearchInFile:(id)sender;
+- (IBAction)setSearchInIndex:(id)sender;
 - (IBAction)searchInFile:(id)sender;
+- (IBAction)searchInIndex:(id)sender;
 
 // sidebar view
 - (IBAction)popViewMenu:(id)sender;
