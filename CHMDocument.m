@@ -1188,6 +1188,9 @@ static int forEachFile(struct chmFile *h,
 	[item setState:NSOnState];
 	[[menu itemWithTag:2] setState:NSOffState];
 	[cell setPlaceholderString:[item title]];
+	
+	if ([[searchItemView stringValue] length] > 0)
+		[self searchInFile:self];
 }
 
 - (IBAction)setSearchInIndex:(id)sender
@@ -1199,6 +1202,9 @@ static int forEachFile(struct chmFile *h,
 	[item setState:NSOnState];
 	[[menu itemWithTag:1] setState:NSOffState];
 	[cell setPlaceholderString:[item title]];
+	
+	if ([[searchItemView stringValue] length] > 0)
+		[self searchInIndex:self];
 }
 
 - (IBAction)searchInIndex:(id)sender
