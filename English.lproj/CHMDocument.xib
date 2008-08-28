@@ -9,14 +9,14 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="100163"/>
-			<integer value="100175"/>
-			<integer value="100055"/>
-			<integer value="100123"/>
+			<integer value="6"/>
 			<integer value="100115"/>
-			<integer value="100099"/>
-			<integer value="100064"/>
-			<integer value="100094"/>
 			<integer value="100131"/>
+			<integer value="100064"/>
+			<integer value="100099"/>
+			<integer value="100175"/>
+			<integer value="100094"/>
+			<integer value="100123"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -304,7 +304,6 @@
 							<reference key="NSSuperview" ref="568628114"/>
 							<bool key="NSIsVertical">YES</bool>
 							<int key="NSDividerStyle">2</int>
-							<string key="NSAutosaveName">CHM Split</string>
 						</object>
 					</object>
 					<string key="NSFrameSize">{819, 559}</string>
@@ -895,6 +894,14 @@
 					</object>
 					<int key="connectionID">100187</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="295361290"/>
+						<reference key="destination" ref="512844837"/>
+					</object>
+					<int key="connectionID">100188</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1363,9 +1370,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{117, 327}, {819, 559}}</string>
+					<string>{{-6, 374}, {819, 559}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{117, 327}, {819, 559}}</string>
+					<string>{{-6, 374}, {819, 559}}</string>
 					<reference ref="9"/>
 					<integer value="0"/>
 					<string>{{201, 387}, {507, 413}}</string>
@@ -1396,7 +1403,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100187</int>
+			<int key="maxID">100188</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

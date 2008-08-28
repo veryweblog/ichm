@@ -25,6 +25,7 @@ static NSString*	SearchToolbarItemIdentifier     = @"Search Item Identifier";
 static NSString*	HomeToolbarItemIdentifier       = @"Home Item Identifier";
 static NSString*	SidebarToolbarItemIdentifier       = @"Sidebar Item Identifier";
 static NSString*	WebVewPreferenceIndentifier     = @"iCHM WebView Preferences";
+static NSString*	SidebarWidthName = @"Sidebar Width";
 static int MinSidebarWidth = 180;
 static BOOL firstDocument = YES;
 
@@ -72,6 +73,8 @@ static BOOL firstDocument = YES;
 - (void)loadJavascript;
 - (void)runJavascript:(NSString*)script;
 
+- (void)restoreSidebar;
+
 - (void)after_zoom;
 
 - (NSTabViewItem*)createWebViewInTab:(id)sender;
@@ -110,7 +113,7 @@ static BOOL firstDocument = YES;
 		console = [[CHMConsole alloc] init];
 		curWebView = nil;
 		
-		sidebarWidth = MinSidebarWidth;
+		sidebarWidth = 0;
 		
 		customizedEncodingTag = 0;
     }
@@ -128,8 +131,6 @@ static BOOL firstDocument = YES;
 	[homePath release];
 	[tocPath release];
 	[indexPath release];
-	[sidebarItemView release];
-	[historyItemView release];
 	[tocSource release];
 	[searchSource release];
 	
@@ -570,7 +571,8 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 		[self hideSidebar:self];
 		
 	[self setupToolbar];
-	
+	[self restoreSidebar];
+		
 	float curWidth = [tocView frame].size.width;
 	if(curWidth > MinSidebarWidth)
 		sidebarWidth = curWidth;
@@ -815,28 +817,6 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 }
 
 # pragma mark actions
-- (IBAction)toggleSidebar:(id)sender
-{
-	float curWidth = [tocView frame].size.width;
-	if(curWidth>30)
-	{
-		[self hideSidebar:sender];
-	}
-	else
-	{
-		float newpos = [splitView frame].size.width - sidebarWidth;
-		[splitView setPosition:newpos ofDividerAtIndex:0];
-	}
-}
-
-- (IBAction)hideSidebar:(id)sender
-{
-	float curWidth = [tocView frame].size.width;
-	if(curWidth > MinSidebarWidth)
-		sidebarWidth = curWidth;
-	[splitView setPosition:[splitView maxPossiblePositionOfDividerAtIndex:0] ofDividerAtIndex:0];	
-}
-
 - (IBAction)changeTopic:(id)sender
 {
 	int selectedRow = [tocView selectedRow];
@@ -1460,6 +1440,42 @@ static int forEachFile(struct chmFile *h,
 		ename = encodingName;
 	return ename;
 }
+#pragma mark split view delegate
+- (void)splitViewDidResizeSubviews:(NSNotification *)aNotification
+{
+	if (sidebarWidth == 0)
+		return;
+	float curWidth = [tocView frame].size.width;
+	if(curWidth > MinSidebarWidth)
+		sidebarWidth = curWidth;
+	[[NSUserDefaults standardUserDefaults] setFloat:sidebarWidth forKey:SidebarWidthName];
+}
+
+- (void)restoreSidebar
+{
+	float newpos = [splitView frame].size.width - [[NSUserDefaults standardUserDefaults] floatForKey:SidebarWidthName];
+	[splitView setPosition:newpos ofDividerAtIndex:0];
+}
+
+- (IBAction)toggleSidebar:(id)sender
+{
+	float curWidth = [tocView frame].size.width;
+	if(curWidth>30)
+	{
+		[self hideSidebar:sender];
+	}
+	else
+		[self restoreSidebar];
+}
+
+- (IBAction)hideSidebar:(id)sender
+{
+	float curWidth = [tocView frame].size.width;
+	if(curWidth > MinSidebarWidth)
+		sidebarWidth = curWidth;
+	[splitView setPosition:[splitView maxPossiblePositionOfDividerAtIndex:0] ofDividerAtIndex:0];	
+}
+
 #pragma mark outlineview delegate
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification
 {
