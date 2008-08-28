@@ -482,7 +482,7 @@
 								</object>
 								<object class="NSMenuItem" id="102151532">
 									<reference key="NSMenu" ref="466310130"/>
-									<string key="NSTitle">Werkzeigleiste einblenden</string>
+									<string key="NSTitle">Werkzeugleiste einblenden</string>
 									<string key="NSKeyEquiv">t</string>
 									<int key="NSKeyEquivModMask">1572864</int>
 									<int key="NSMnemonicLoc">2147483647</int>
@@ -491,7 +491,7 @@
 								</object>
 								<object class="NSMenuItem" id="237841660">
 									<reference key="NSMenu" ref="466310130"/>
-									<string type="base64-UTF8" key="NSTitle">V2Vya3plaWdsZWlzdGUgYW5wYXNzZW7igKY</string>
+									<string type="base64-UTF8" key="NSTitle">V2Vya3pldWdsZWlzdGUgYW5wYXNzZW7igKY</string>
 									<string key="NSKeyEquiv"/>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
@@ -538,14 +538,14 @@
 								</object>
 								<object class="NSMenuItem" id="498213430">
 									<reference key="NSMenu" ref="466310130"/>
-									<string key="NSTitle">Text Kodierung</string>
+									<string key="NSTitle">Textkodierung</string>
 									<string key="NSKeyEquiv"/>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="1033313550"/>
 									<reference key="NSMixedImage" ref="310636482"/>
 									<string key="NSAction">submenuAction:</string>
 									<object class="NSMenu" key="NSSubmenu" id="56555943">
-										<string key="NSTitle">Text Kodierung</string>
+										<string key="NSTitle">Textkodierung</string>
 										<object class="NSMutableArray" key="NSMenuItems">
 											<bool key="EncodedWithXMLCoder">YES</bool>
 										</object>
