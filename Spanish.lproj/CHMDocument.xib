@@ -373,7 +373,7 @@
 							<int key="NSCellFlags2">268436480</int>
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="389328562"/>
-							<string key="NSPlaceholderString">Search in File</string>
+							<string key="NSPlaceholderString">Buscar en Archivo</string>
 							<reference key="NSControlView" ref="174517111"/>
 							<bool key="NSDrawsBackground">YES</bool>
 							<int key="NSTextBezelStyle">1</int>
@@ -600,7 +600,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSMenuItem" id="501686490">
 						<reference key="NSMenu" ref="466037443"/>
-						<string key="NSTitle">Search in File</string>
+						<string key="NSTitle">Buscar en Archivo</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<int key="NSState">1</int>
@@ -610,7 +610,7 @@
 					</object>
 					<object class="NSMenuItem" id="524452004">
 						<reference key="NSMenu" ref="466037443"/>
-						<string key="NSTitle">Search in Index</string>
+						<string type="base64-UTF8" key="NSTitle">QnVzY2FyIGVuIMOtbmRpY2U</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="888656195"/>
