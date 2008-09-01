@@ -19,6 +19,7 @@
 
 - (id)initWithData:(NSData *)data encodingName:(NSString*)encodingName;
 - (id)initWithTOC:(CHMTableOfContent*)toc filterByPredicate:(NSPredicate*)predicate;
+- (LinkItem *)curItem;
 - (LinkItem *)itemForPath:(NSString*)path withStack:(NSMutableArray*)stack;
 - (int)rootChildrenCount;
 - (void)sort;

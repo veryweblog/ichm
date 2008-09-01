@@ -136,7 +136,6 @@
 @end
 
 @interface CHMTableOfContent (Private)
-- (LinkItem *)curItem;
 - (void)push_item;
 - (void)pop_item;
 - (void)new_item;
@@ -290,7 +289,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	curItem = [[LinkItem alloc] init];
 	LinkItem * parent = [itemStack lastObject];
 	[parent appendChild:curItem];
-	[curItem release];
 }
 
 - (void)pop_item
@@ -302,6 +300,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 # pragma mark NSXMLParser delegation
 static void elementDidStart( CHMTableOfContent *context, const xmlChar *name, const xmlChar **atts ) 
 {
+	if (!context)
+		return;
+	
     if ( !strcasecmp( "ul", (char *)name ) ) {
 		[context push_item];
         return;
