@@ -1462,7 +1462,10 @@ static int forEachFile(struct chmFile *h,
 
 - (void)restoreSidebar
 {
-	float newpos = [splitView frame].size.width - [[NSUserDefaults standardUserDefaults] floatForKey:SidebarWidthName];
+	int width = [[NSUserDefaults standardUserDefaults] floatForKey:SidebarWidthName];
+	if (width < MinSidebarWidth)
+		width = MinSidebarWidth;
+	float newpos = [splitView frame].size.width - width;
 	[splitView setPosition:newpos ofDividerAtIndex:0];
 }
 
