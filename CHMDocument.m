@@ -709,6 +709,9 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 	LinkItem* item = [[tocView dataSource] itemForPath:path withStack:nil];
 	NSTabViewItem *tabItem = [docTabView selectedTabViewItem];
 	NSString *name = [item name];
+	if(!name || [name length] == 0)
+		name = [curWebView mainFrameTitle];
+
 	if(name && [name length]>0)
 		[tabItem setLabel:name];
 	else
