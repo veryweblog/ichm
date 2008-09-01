@@ -26,7 +26,7 @@ static NSString*	HomeToolbarItemIdentifier       = @"Home Item Identifier";
 static NSString*	SidebarToolbarItemIdentifier       = @"Sidebar Item Identifier";
 static NSString*	WebVewPreferenceIndentifier     = @"iCHM WebView Preferences";
 static NSString*	SidebarWidthName = @"Sidebar Width";
-static int MinSidebarWidth = 180;
+static float MinSidebarWidth = 180.0;
 static BOOL firstDocument = YES;
 
 @interface CHMConsole : NSObject
@@ -1462,7 +1462,7 @@ static int forEachFile(struct chmFile *h,
 
 - (void)restoreSidebar
 {
-	int width = [[NSUserDefaults standardUserDefaults] floatForKey:SidebarWidthName];
+	float width = [[NSUserDefaults standardUserDefaults] floatForKey:SidebarWidthName];
 	if (width < MinSidebarWidth)
 		width = MinSidebarWidth;
 	float newpos = [splitView frame].size.width - width;
