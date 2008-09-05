@@ -98,7 +98,7 @@
 									<int key="NSButtonFlags">-2038152961</int>
 									<int key="NSButtonFlags2">164</int>
 									<string key="NSAlternateContents"/>
-									<string key="NSKeyEquivalent"/>
+									<string type="base64-UTF8" key="NSKeyEquivalent">Gw</string>
 									<int key="NSPeriodicDelay">400</int>
 									<int key="NSPeriodicInterval">75</int>
 								</object>
@@ -488,6 +488,9 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addNewTab:</string>
 							<string>beginFind:</string>
+							<string>changeEncoding:</string>
+							<string>changeToContentsView:</string>
+							<string>changeToIndexView:</string>
 							<string>changeTopic:</string>
 							<string>closeTab:</string>
 							<string>doneFind:</string>
@@ -497,10 +500,19 @@
 							<string>goBack:</string>
 							<string>goForward:</string>
 							<string>goHistory:</string>
+							<string>goHome:</string>
+							<string>hideSidebar:</string>
 							<string>locateTOC:</string>
 							<string>openInNewTab:</string>
+							<string>popViewMenu:</string>
+							<string>resetViewMenuState:</string>
 							<string>searchInFile:</string>
+							<string>searchInIndex:</string>
+							<string>setSearchInFile:</string>
+							<string>setSearchInIndex:</string>
+							<string>showAddBookmark:</string>
 							<string>showFindPanel:</string>
+							<string>toggleSidebar:</string>
 							<string>zoom:</string>
 							<string>zoomIn:</string>
 							<string>zoomOut:</string>
@@ -525,31 +537,53 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>id</string>
+							<string>NSMenuItem</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>_tabView</string>
-							<string>_tocView</string>
+							<string>addBookmarkPanel</string>
+							<string>docTabView</string>
 							<string>documentWindow</string>
 							<string>historyItemView</string>
-							<string>locateItemView</string>
+							<string>homeItemView</string>
 							<string>searchItemView</string>
+							<string>sidebarItemView</string>
+							<string>sidebarViewMenu</string>
+							<string>splitView</string>
 							<string>tabBar</string>
+							<string>textEncodingMenu</string>
 							<string>textSizeItemView</string>
+							<string>tocView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSPanel</string>
 							<string>NSTabView</string>
-							<string>NSOutlineView</string>
 							<string>NSWindow</string>
 							<string>NSSegmentedControl</string>
-							<string>id</string>
+							<string>NSButton</string>
 							<string>NSSearchField</string>
+							<string>NSButton</string>
+							<string>NSMenu</string>
+							<string>NSSplitView</string>
 							<string>PSMTabBarControl</string>
+							<string>NSMenuItem</string>
 							<string>NSSegmentedControl</string>
+							<string>NSOutlineView</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -596,7 +630,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.LastKnownRelativeProjectPath">ichm.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../ichm.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>
 </archive>

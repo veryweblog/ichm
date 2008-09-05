@@ -55,6 +55,7 @@
 						</object>
 						<string key="NSFrameSize">{480, 247}</string>
 						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSNextKeyView"/>
 						<string key="FrameName"/>
 						<string key="GroupName"/>
 						<object class="WebPreferences" key="Preferences">
@@ -96,7 +97,7 @@
 									<int key="NSButtonFlags">-2038152961</int>
 									<int key="NSButtonFlags2">164</int>
 									<string key="NSAlternateContents"/>
-									<string key="NSKeyEquivalent"/>
+									<string type="base64-UTF8" key="NSKeyEquivalent">Gw</string>
 									<int key="NSPeriodicDelay">400</int>
 									<int key="NSPeriodicInterval">75</int>
 								</object>
@@ -486,6 +487,8 @@
 							<string>addNewTab:</string>
 							<string>beginFind:</string>
 							<string>changeEncoding:</string>
+							<string>changeToContentsView:</string>
+							<string>changeToIndexView:</string>
 							<string>changeTopic:</string>
 							<string>closeTab:</string>
 							<string>doneFind:</string>
@@ -499,7 +502,12 @@
 							<string>hideSidebar:</string>
 							<string>locateTOC:</string>
 							<string>openInNewTab:</string>
+							<string>popViewMenu:</string>
+							<string>resetViewMenuState:</string>
 							<string>searchInFile:</string>
+							<string>searchInIndex:</string>
+							<string>setSearchInFile:</string>
+							<string>setSearchInIndex:</string>
 							<string>showAddBookmark:</string>
 							<string>showFindPanel:</string>
 							<string>toggleSidebar:</string>
@@ -528,6 +536,13 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>NSMenuItem</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -545,6 +560,7 @@
 							<string>homeItemView</string>
 							<string>searchItemView</string>
 							<string>sidebarItemView</string>
+							<string>sidebarViewMenu</string>
 							<string>splitView</string>
 							<string>tabBar</string>
 							<string>textEncodingMenu</string>
@@ -560,6 +576,7 @@
 							<string>NSButton</string>
 							<string>NSSearchField</string>
 							<string>NSButton</string>
+							<string>NSMenu</string>
 							<string>NSSplitView</string>
 							<string>PSMTabBarControl</string>
 							<string>NSMenuItem</string>

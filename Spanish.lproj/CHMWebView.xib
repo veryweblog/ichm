@@ -8,7 +8,6 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -28,7 +27,7 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSCustomView" id="1005">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -82,7 +81,7 @@
 							<object class="NSButton" id="855362353">
 								<reference key="NSNextResponder" ref="1067057059"/>
 								<int key="NSvFlags">265</int>
-								<string key="NSFrame">{{427, 5}, {48, 17}}</string>
+								<string key="NSFrame">{{430, 5}, {42, 17}}</string>
 								<reference key="NSSuperview" ref="1067057059"/>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="184155334">
@@ -98,7 +97,7 @@
 									<int key="NSButtonFlags">-2038152961</int>
 									<int key="NSButtonFlags2">164</int>
 									<string key="NSAlternateContents"/>
-									<string key="NSKeyEquivalent"/>
+									<string type="base64-UTF8" key="NSKeyEquivalent">Gw</string>
 									<int key="NSPeriodicDelay">400</int>
 									<int key="NSPeriodicInterval">75</int>
 								</object>
@@ -224,7 +223,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{480, 272}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 		</object>
@@ -434,7 +432,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{476, 537}, {480, 272}}</string>
+					<string>{{370, 537}, {480, 272}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{628, 654}</string>
 					<string>{{217, 442}, {480, 272}}</string>
@@ -489,6 +487,8 @@
 							<string>addNewTab:</string>
 							<string>beginFind:</string>
 							<string>changeEncoding:</string>
+							<string>changeToContentsView:</string>
+							<string>changeToIndexView:</string>
 							<string>changeTopic:</string>
 							<string>closeTab:</string>
 							<string>doneFind:</string>
@@ -502,7 +502,12 @@
 							<string>hideSidebar:</string>
 							<string>locateTOC:</string>
 							<string>openInNewTab:</string>
+							<string>popViewMenu:</string>
+							<string>resetViewMenuState:</string>
 							<string>searchInFile:</string>
+							<string>searchInIndex:</string>
+							<string>setSearchInFile:</string>
+							<string>setSearchInIndex:</string>
 							<string>showAddBookmark:</string>
 							<string>showFindPanel:</string>
 							<string>toggleSidebar:</string>
@@ -531,6 +536,13 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>NSMenuItem</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -548,6 +560,7 @@
 							<string>homeItemView</string>
 							<string>searchItemView</string>
 							<string>sidebarItemView</string>
+							<string>sidebarViewMenu</string>
 							<string>splitView</string>
 							<string>tabBar</string>
 							<string>textEncodingMenu</string>
@@ -563,6 +576,7 @@
 							<string>NSButton</string>
 							<string>NSSearchField</string>
 							<string>NSButton</string>
+							<string>NSMenu</string>
 							<string>NSSplitView</string>
 							<string>PSMTabBarControl</string>
 							<string>NSMenuItem</string>
