@@ -36,14 +36,14 @@
 
 - (IBAction)showFindPanel:(id)sender
 {
-	if (![findPanel isHidden])
-		return;
-
-	[findPanel setHidden:NO];
-	float webViewHeight = [webView frame].size.height;
-	webViewHeight = webViewHeight - 27;
-	[webView setFrame:NSMakeRect([webView frame].origin.x, [webView frame].origin.y, [webView frame].size.width, webViewHeight)];
-	[webView setNeedsDisplay:YES];
+	if ([findPanel isHidden])
+	{
+		[findPanel setHidden:NO];
+		float webViewHeight = [webView frame].size.height;
+		webViewHeight = webViewHeight - 27;
+		[webView setFrame:NSMakeRect([webView frame].origin.x, [webView frame].origin.y, [webView frame].size.width, webViewHeight)];
+		[webView setNeedsDisplay:YES];
+	}
 	[[[self view] window] makeFirstResponder:searchField];
 }
 
