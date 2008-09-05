@@ -91,6 +91,7 @@ struct chmFile;
 - (IBAction)setSearchInIndex:(id)sender;
 - (IBAction)searchInFile:(id)sender;
 - (IBAction)searchInIndex:(id)sender;
+- (IBAction)focusOnSearch:(id)sender;
 
 // sidebar view
 - (IBAction)popViewMenu:(id)sender;

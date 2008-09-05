@@ -1327,6 +1327,12 @@ static int forEachFile(struct chmFile *h,
 
 	[tocView reloadData];
 }
+
+- (IBAction)focusOnSearch:(id)sender
+{
+	[documentWindow makeFirstResponder:searchItemView];
+}
+
 # pragma mark find panel
 - (IBAction)showFindPanel:(id)sender
 {
