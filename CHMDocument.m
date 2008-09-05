@@ -26,7 +26,7 @@ static NSString*	HomeToolbarItemIdentifier       = @"Home Item Identifier";
 static NSString*	SidebarToolbarItemIdentifier       = @"Sidebar Item Identifier";
 static NSString*	WebVewPreferenceIndentifier     = @"iCHM WebView Preferences";
 static NSString*	SidebarWidthName = @"Sidebar Width";
-static float MinSidebarWidth = 180.0;
+static float MinSidebarWidth = 160.0;
 static BOOL firstDocument = YES;
 
 @interface CHMConsole : NSObject
@@ -113,9 +113,9 @@ static BOOL firstDocument = YES;
 		console = [[CHMConsole alloc] init];
 		curWebView = nil;
 		
-		sidebarWidth = 0;
-		
 		customizedEncodingTag = 0;
+		
+		isSidebarRestored = NO;
     }
     return self;
 }
@@ -573,10 +573,6 @@ static inline NSString * LCIDtoEncodingName(unsigned int lcid) {
 	[self setupToolbar];
 	[self restoreSidebar];
 		
-	float curWidth = [tocView frame].size.width;
-	if(curWidth > MinSidebarWidth)
-		sidebarWidth = curWidth;
-	
 	[self goHome:self];
 	
 	[self prepareSearchIndex];
@@ -1452,12 +1448,13 @@ static int forEachFile(struct chmFile *h,
 #pragma mark split view delegate
 - (void)splitViewDidResizeSubviews:(NSNotification *)aNotification
 {
-	if (sidebarWidth == 0)
+	if (!isSidebarRestored)
 		return;
-	float curWidth = [tocView frame].size.width;
+	
+	NSView *sidebarView = [[splitView subviews] objectAtIndex:1];
+	float curWidth = [sidebarView frame].size.width;
 	if(curWidth > MinSidebarWidth)
-		sidebarWidth = curWidth;
-	[[NSUserDefaults standardUserDefaults] setFloat:sidebarWidth forKey:SidebarWidthName];
+		[[NSUserDefaults standardUserDefaults] setFloat:curWidth forKey:SidebarWidthName];
 }
 
 - (void)restoreSidebar
@@ -1466,6 +1463,7 @@ static int forEachFile(struct chmFile *h,
 	if (width < MinSidebarWidth)
 		width = MinSidebarWidth;
 	float newpos = [splitView frame].size.width - width;
+	isSidebarRestored = YES;
 	[splitView setPosition:newpos ofDividerAtIndex:0];
 }
 
@@ -1482,9 +1480,6 @@ static int forEachFile(struct chmFile *h,
 
 - (IBAction)hideSidebar:(id)sender
 {
-	float curWidth = [tocView frame].size.width;
-	if(curWidth > MinSidebarWidth)
-		sidebarWidth = curWidth;
 	[splitView setPosition:[splitView maxPossiblePositionOfDividerAtIndex:0] ofDividerAtIndex:0];	
 }
 

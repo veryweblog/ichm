@@ -40,8 +40,6 @@ struct chmFile;
     NSString *tocPath;
     NSString *indexPath;
 	
-	float sidebarWidth;
-	
 	CHMTableOfContent *tocSource ;
 	CHMTableOfContent *indexSource ;
 	CHMSearchResult *searchSource;
@@ -50,6 +48,8 @@ struct chmFile;
 	NSMutableData *searchIndexObject;
 	BOOL isIndexDone;
 	NSCondition *searchIndexCondition;
+	
+	BOOL isSidebarRestored;
 	
 	NSMutableArray *webViews;
 	WebView *curWebView;
