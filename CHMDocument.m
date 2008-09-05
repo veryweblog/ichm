@@ -1011,6 +1011,8 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 		[[tabBar delegate] tabView:docTabView didCloseTabViewItem:item];
 		[item release];
 	}
+	else
+		[self close];
 }
 
 - (void)tabView:(NSTabView *)tabView didCloseTabViewItem:(NSTabViewItem *)tabViewItem
