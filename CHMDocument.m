@@ -1214,14 +1214,18 @@ static int forEachFile(struct chmFile *h,
 	{
 		[self resetSidebarView];
 		
-		[searchSource release];
+		if (searchSource)
+			[searchSource release];
 		[self removeHighlight];
 		searchSource = nil;
 		return;
 	}
 	
 	if (searchSource)
+	{
 		[searchSource release];
+		searchString = nil;
+	}
 
 	if (!indexSource)
 		return;
