@@ -1226,7 +1226,7 @@ static int forEachFile(struct chmFile *h,
 	if (searchSource)
 	{
 		[searchSource release];
-		searchString = nil;
+		searchSource = nil;
 	}
 
 	if (!indexSource)

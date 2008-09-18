@@ -73,6 +73,13 @@
 		32DBCF750370BD2300C91783 /* ichm_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ichm_Prefix.pch; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* iChm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		90C4D9C00E7DCBA8006B2109 /* Dutch */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Dutch; path = Dutch.lproj/CHMDocument.xib; sourceTree = "<group>"; };
+		90C4D9C10E7DCBBB006B2109 /* Dutch */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Dutch; path = Dutch.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		90C4D9C20E7DCBDF006B2109 /* Dutch */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Dutch; path = Dutch.lproj/CHMWebView.xib; sourceTree = "<group>"; };
+		90C4D9C30E7DCBFA006B2109 /* Dutch */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Dutch; path = Dutch.lproj/Bookmark.xib; sourceTree = "<group>"; };
+		90C4D9C40E7DCC17006B2109 /* Dutch */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Dutch; path = Dutch.lproj/Localizable.strings; sourceTree = "<group>"; };
+		90C4D9C50E7DCC23006B2109 /* Dutch */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Dutch; path = Dutch.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		90C4D9C60E7DCC31006B2109 /* Dutch */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Dutch; path = Dutch.lproj/Credits.rtf; sourceTree = "<group>"; };
 		C30F2B2E0E42135C003A17A7 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		C33A4AB90E34E92D00277D64 /* CHMDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMDocument.h; sourceTree = "<group>"; };
 		C33A4ABA0E34E92D00277D64 /* CHMDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMDocument.m; sourceTree = "<group>"; };
@@ -336,6 +343,7 @@
 				zh_CN,
 				Spanish,
 				zh_TW,
+				Dutch,
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* ichm */;
 			projectDirPath = "";
@@ -418,6 +426,7 @@
 				089C1660FE840EACC02AAC07 /* English */,
 				C36FD4520E48368C00496822 /* German */,
 				C36FD4F00E48393000496822 /* zh_CN */,
+				90C4D9C50E7DCC23006B2109 /* Dutch */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -430,6 +439,7 @@
 				C36FD4F60E483DD900496822 /* zh_CN */,
 				C3FF6BAE0E585DCF00F9EBC2 /* Spanish */,
 				C38B8E850E627FE600E0DC42 /* zh_TW */,
+				90C4D9C10E7DCBBB006B2109 /* Dutch */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -438,6 +448,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2A37F4BAFDCFA73011CA2CEA /* English */,
+				90C4D9C60E7DCC31006B2109 /* Dutch */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -450,6 +461,7 @@
 				C36FD4F50E483DA800496822 /* zh_CN */,
 				C3FF6BAD0E585DC300F9EBC2 /* Spanish */,
 				C38B8E840E627FDD00E0DC42 /* zh_TW */,
+				90C4D9C00E7DCBA8006B2109 /* Dutch */,
 			);
 			name = CHMDocument.xib;
 			sourceTree = "<group>";
@@ -462,6 +474,7 @@
 				C36FD5840E48513900496822 /* German */,
 				C3FF6BAF0E585DD600F9EBC2 /* Spanish */,
 				C38B8E860E627FEC00E0DC42 /* zh_TW */,
+				90C4D9C20E7DCBDF006B2109 /* Dutch */,
 			);
 			name = CHMWebView.xib;
 			sourceTree = "<group>";
@@ -474,6 +487,7 @@
 				C36FD5830E4850F100496822 /* German */,
 				C38B8E880E627FFA00E0DC42 /* zh_TW */,
 				C38B8EA00E628B8D00E0DC42 /* Spanish */,
+				90C4D9C40E7DCC17006B2109 /* Dutch */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -486,6 +500,7 @@
 				C3D2046D0E53EFBA00D5CA58 /* zh_CN */,
 				C3FF6BB00E585DDD00F9EBC2 /* Spanish */,
 				C38B8E870E627FF300E0DC42 /* zh_TW */,
+				90C4D9C30E7DCBFA006B2109 /* Dutch */,
 			);
 			name = Bookmark.xib;
 			sourceTree = "<group>";
