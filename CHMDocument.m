@@ -17,6 +17,7 @@
 #import "CHMTextEncodingMenu.h"
 #import "BookmarkController.h"
 #import "CHMWebView.h"
+#import "CHMExporter.h"
 #import "lcid.h"
 
 static NSString* 	ICHMToolbarIdentifier 		= @"ICHM Toolbar Identifier";
@@ -65,7 +66,6 @@ static BOOL firstDocument = YES;
 - (void)updateHistoryButton;
 - (void)loadPath:(NSString *)path;
 
-- (NSURL*)composeURL:(NSString *)path;
 - (NSString*)extractPathFromURL:(NSURL*)url;
 
 - (void)prepareSearchIndex;
@@ -949,6 +949,28 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 					 didRunSelector:NULL
 					 contextInfo:NULL];
 	
+}
+
+- (IBAction)exportToPDF:(id)sender
+{
+	NSSavePanel *sp;
+	int runResult;
+	
+	/* create or get the shared instance of NSSavePanel */
+	sp = [NSSavePanel savePanel];
+	
+	[sp setRequiredFileType:@"pdf"];
+	
+	/* display the NSSavePanel */
+	runResult = [sp runModal];
+	
+	/* if successful, save file under designated name */
+	if (runResult == NSOKButton) {
+		NSString *filename = [sp filename];
+		CHMExporter *exporter = [[CHMExporter alloc] initWithCHMDocument:self toFileName:filename WithPageList:[tocSource pageList]];
+		[exporter export];
+		[exporter release];
+	}
 }
 
 - (void)updateHistoryButton

@@ -64,6 +64,7 @@ struct chmFile;
 
 - (NSString*)currentURL;
 - (NSString*)currentTitle;
+- (NSURL*)composeURL:(NSString *)path;
 
 - (BOOL) exist: (NSString *)path;
 - (NSData *)content: (NSString *)path;
@@ -87,6 +88,9 @@ struct chmFile;
 - (IBAction)gotoPrevPage:(id)sender;
 
 - (IBAction)locateTOC:(id)sender;
+
+// dump to pdf
+- (IBAction)exportToPDF:(id)sender;
 
 // search
 - (IBAction)setSearchInFile:(id)sender;

@@ -17,6 +17,7 @@
 	LinkItem *curItem;
 }
 @property (readonly) LinkItem *rootItems;
+@property (readonly) NSArray *pageList;
 
 - (id)initWithData:(NSData *)data encodingName:(NSString*)encodingName;
 - (id)initWithTOC:(CHMTableOfContent*)toc filterByPredicate:(NSPredicate*)predicate;

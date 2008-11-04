@@ -32,6 +32,7 @@
 		C3907F3D0EC005430018AA80 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3907F3C0EC005430018AA80 /* Quartz.framework */; };
 		C3907F690EC005B30018AA80 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3907F680EC005B30018AA80 /* ApplicationServices.framework */; };
 		C390802E0EC027070018AA80 /* CHMWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C390802D0EC027070018AA80 /* CHMWebView.m */; };
+		C390817B0EC0A4EC0018AA80 /* CHMExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = C390817A0EC0A4EC0018AA80 /* CHMExporter.m */; };
 		C39A12160E607D330009C875 /* view.tif in Resources */ = {isa = PBXBuildFile; fileRef = C39A12150E607D330009C875 /* view.tif */; };
 		C3A79CC30E30438B00FF4485 /* CHMTableOfContent.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A79CC20E30438B00FF4485 /* CHMTableOfContent.m */; };
 		C3AA9B220E3EC8A200D2FB53 /* CHMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3AA9B210E3EC8A200D2FB53 /* CHMWebViewController.m */; };
@@ -123,6 +124,8 @@
 		C3907F680EC005B30018AA80 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		C390802C0EC027070018AA80 /* CHMWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMWebView.h; sourceTree = "<group>"; };
 		C390802D0EC027070018AA80 /* CHMWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMWebView.m; sourceTree = "<group>"; };
+		C39081790EC0A4EC0018AA80 /* CHMExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMExporter.h; sourceTree = "<group>"; };
+		C390817A0EC0A4EC0018AA80 /* CHMExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMExporter.m; sourceTree = "<group>"; };
 		C39A12150E607D330009C875 /* view.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = view.tif; sourceTree = "<group>"; };
 		C3A79CC10E30438B00FF4485 /* CHMTableOfContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMTableOfContent.h; sourceTree = "<group>"; };
 		C3A79CC20E30438B00FF4485 /* CHMTableOfContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMTableOfContent.m; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 				C3E9715D0E4BEAA000B7B36D /* lcid.h */,
 				C390802C0EC027070018AA80 /* CHMWebView.h */,
 				C390802D0EC027070018AA80 /* CHMWebView.m */,
+				C39081790EC0A4EC0018AA80 /* CHMExporter.h */,
+				C390817A0EC0A4EC0018AA80 /* CHMExporter.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -428,6 +433,7 @@
 				C3BF8BA00E4FDD7200AE3BEE /* CHMBookmark.m in Sources */,
 				C3D5D3350E5159D5007C51BD /* BookmarkView.m in Sources */,
 				C390802E0EC027070018AA80 /* CHMWebView.m in Sources */,
+				C390817B0EC0A4EC0018AA80 /* CHMExporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

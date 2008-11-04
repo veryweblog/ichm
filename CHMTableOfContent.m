@@ -162,6 +162,7 @@
 
 @implementation CHMTableOfContent
 @synthesize rootItems;
+@synthesize pageList;
 
 static void elementDidStart( CHMTableOfContent *toc, const xmlChar *name, const xmlChar **atts );
 static void elementDidEnd( CHMTableOfContent *toc, const xmlChar *name );
