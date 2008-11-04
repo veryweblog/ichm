@@ -2,22 +2,17 @@
 //  CHMWebView.h
 //  ichm
 //
-//  Created by Robin Lu on 7/29/08.
+//  Created by Robin Lu on 11/4/08.
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
-@class WebView;
+#import <WebKit/WebKit.h>
+@class CHMDocument;
 
-@interface CHMWebView : NSViewController {
-	IBOutlet WebView* webView;
-	IBOutlet NSView*  findPanel;
-	IBOutlet NSSearchField* searchField;
+@interface CHMWebView : WebView {
+	CHMDocument* chmDocument;
 }
 
-@property (readonly) WebView* webView;
-@property (readonly) NSSearchField* searchField;
-
-- (IBAction)hideFindPanel:(id)sender;
-- (IBAction)showFindPanel:(id)sender;
+- (void)setDocument:(CHMDocument*)doc;
 @end

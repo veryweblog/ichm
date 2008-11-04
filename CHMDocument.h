@@ -83,6 +83,8 @@ struct chmFile;
 - (IBAction)goBack:(id)sender;
 - (IBAction)goHistory:(id)sender;
 - (IBAction)goHome:(id)sender;
+- (IBAction)gotoNextPage:(id)sender;
+- (IBAction)gotoPrevPage:(id)sender;
 
 - (IBAction)locateTOC:(id)sender;
 

@@ -12,10 +12,11 @@
 #import <PSMTabBarControl/PSMTabBarControl.h>
 #import "ITSSProtocol.h"
 #import "CHMTableOfContent.h"
-#import "CHMWebView.h"
+#import "CHMWebViewController.h"
 #import "ICHMApplication.h"
 #import "CHMTextEncodingMenu.h"
 #import "BookmarkController.h"
+#import "CHMWebView.h"
 #import "lcid.h"
 
 static NSString* 	ICHMToolbarIdentifier 		= @"ICHM Toolbar Identifier";
@@ -806,7 +807,7 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 {
 	for(NSTabViewItem* item in [docTabView tabViewItems])
 	{
-		CHMWebView *chmwv = [item identifier];
+		CHMWebViewController *chmwv = [item identifier];
 		if([chmwv webView] == sender)
 		{
 			curWebView = sender;
@@ -860,6 +861,24 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 		default:
 			break;
 	}
+}
+
+- (IBAction)gotoNextPage:(id)sender
+{
+	int selectedRow = [tocView selectedRow];
+	LinkItem *topic = [tocView itemAtRow:selectedRow];
+	LinkItem* nextPage = [tocSource getNextPage:topic];
+	if (nextPage)
+		[self loadPath:[nextPage path]];
+}
+
+- (IBAction)gotoPrevPage:(id)sender
+{
+	int selectedRow = [tocView selectedRow];
+	LinkItem *topic = [tocView itemAtRow:selectedRow];
+	LinkItem* prevPage = [tocSource getPrevPage:topic];
+	if (prevPage)
+		[self loadPath:[prevPage path]];
 }
 
 - (IBAction)locateTOC:(id)sender
@@ -953,10 +972,11 @@ decidePolicyForNewWindowAction:(NSDictionary *)actionInformation
 
 - (NSTabViewItem*)createWebViewInTab:(id)sender
 {
-	CHMWebView * chmWebView = [[CHMWebView alloc] init];
+	CHMWebViewController * chmWebView = [[CHMWebViewController alloc] init];
 	
 	// init the webview
 	WebView *newView = [chmWebView webView];
+	[(CHMWebView*)newView setDocument:self];
 	[newView setPreferencesIdentifier:WebVewPreferenceIndentifier];
 	if ([webViews count] == 0)
 	{
@@ -1338,7 +1358,7 @@ static int forEachFile(struct chmFile *h,
 # pragma mark find panel
 - (IBAction)showFindPanel:(id)sender
 {
-	CHMWebView * chmWebView = (CHMWebView*)[[docTabView selectedTabViewItem] identifier];
+	CHMWebViewController * chmWebView = (CHMWebViewController*)[[docTabView selectedTabViewItem] identifier];
 	return [chmWebView showFindPanel:sender];
 }
 

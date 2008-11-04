@@ -2,49 +2,27 @@
 //  CHMWebView.m
 //  ichm
 //
-//  Created by Robin Lu on 7/29/08.
+//  Created by Robin Lu on 11/4/08.
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
 #import "CHMWebView.h"
-#import <WebKit/WebKit.h>
+#import "CHMDocument.h"
 
 @implementation CHMWebView
 
-@synthesize webView;
-@synthesize searchField;
-
-- (id) init
+- (void)setDocument:(CHMDocument*)doc
 {
-	if (![super initWithNibName:@"CHMWebView" bundle:nil])
-		return nil;
-	[self loadView];
-	[self hideFindPanel:self];
-	return self;
+	chmDocument = doc;
 }
 
-- (IBAction)hideFindPanel:(id)sender
+- (void)scrollPageDown:(id)sender
 {
-	if ([findPanel isHidden])
-		return;
-	[findPanel setHidden:YES];
-	float webViewHeight = [webView frame].size.height;
-	webViewHeight = webViewHeight + 27;
-	[webView setFrame:NSMakeRect([webView frame].origin.x, [webView frame].origin.y, [webView frame].size.width, webViewHeight)];
-	[webView setNeedsDisplay:YES];
+	[chmDocument gotoNextPage:sender];
 }
 
-- (IBAction)showFindPanel:(id)sender
+- (void)scrollPageUp:(id)sender
 {
-	if ([findPanel isHidden])
-	{
-		[findPanel setHidden:NO];
-		float webViewHeight = [webView frame].size.height;
-		webViewHeight = webViewHeight - 27;
-		[webView setFrame:NSMakeRect([webView frame].origin.x, [webView frame].origin.y, [webView frame].size.width, webViewHeight)];
-		[webView setNeedsDisplay:YES];
-	}
-	[[[self view] window] makeFirstResponder:searchField];
+	[chmDocument gotoPrevPage:sender];	
 }
-
 @end
